@@ -1,0 +1,151 @@
+%% Based on a TeXnicCenter-Template by Gyorgy SZEIDL.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------
+%
+\documentclass{book}%
+
+
+\usepackage{amsmath}%
+\usepackage{amsfonts}%
+\usepackage{amssymb}%
+\usepackage{graphicx}%
+\usepackage{wrapfig}
+
+%----------------------------------------------------------
+\newtheorem{theorem}{Theorem}
+\newtheorem{acknowledgement}[theorem]{Acknowledgement}
+\newtheorem{algorithm}[theorem]{Algorithm}
+\newtheorem{axiom}[theorem]{Axiom}
+\newtheorem{case}[theorem]{Case}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{conclusion}[theorem]{Conclusion}
+\newtheorem{condition}[theorem]{Condition}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{criterion}[theorem]{Criterion}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{exercise}[theorem]{Exercise}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{notation}[theorem]{Notation}
+\newtheorem{problem}[theorem]{Problem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{solution}[theorem]{Solution}
+\newtheorem{summary}[theorem]{Summary}
+\newenvironment{proof}[1][Proof]{\textbf{#1.} }{\ \rule{0.5em}{0.5em}}
+%----------------------------------------------------------
+\begin{document}
+
+% First Page.
+\frontmatter
+\title{Undergraduate Final Degree Project \\ Design, Development and Implementation of a Multi-Object Tracking Algorithm}
+\author{Pablo Ram\'on Soria}
+\date{The Date}
+\maketitle
+
+%----------------------------------------------------------
+% Table of contenst
+\tableofcontents
+
+%----------------------------------------------------------
+% Preface
+\chapter*{Preface}
+\input{Preface.tex}
+
+%----------------------------------------------------------
+% Chapter 1. Introduction
+\chapter{Introduction}
+\section{State of Art}
+\input{c11_State_of_Art}
+
+\section{Objectives}
+\input{c12_Objectives}
+
+\section{Methodology}
+\input{c13_Methodology}
+
+\section{Structure}
+\input{c14_Structure}
+
+
+%% Started the main Content
+\mainmatter
+
+%% --> No parts used \part{The First Part}
+
+%----------------------------------------------------------
+% Chapter 2. Algorithmcs & Software architecture
+\chapter{Algorithmic and Software architecture}
+\section{Introduction}
+\input{c21_Introduction}
+
+\section{Segmentation Algorithm}
+\input{c22_Segmentation_Algorithm}
+
+\section{Matching Algorithm}
+\input{c23_Matching_Algorithm}
+
+\section{Extended Kalman Filter}
+\input{c24_Extended_Kalman_Filter}
+
+\section{Communication}
+\input{c25_Communication}
+
+\section{Architecture}
+\input{c26_Architecture}
+
+
+%----------------------------------------------------------
+% Chapter 3. Simulation on VREP 
+\chapter{Simulation on VREP}
+\section{Introduction}
+\input{c31_Introduction}
+
+\section{Implementation in VREP program}
+\input{c32_ImplementationVREP}
+
+\section{Test and Results}
+\input{c33_TestAndResults}
+
+%----------------------------------------------------------
+% Chapter 4. Hardware Architecture
+\chapter{Hardware Architecture}
+\section{Introduction}
+\section{Development Architecture}
+\section{Hardware for Release}
+
+%----------------------------------------------------------
+% Chapter 5. Real tests
+\chapter{Real Tests}
+\section{Introduction}
+\section{Hardware \& Software implementation}
+\section{Results}
+
+%----------------------------------------------------------
+% Chapter 6. Conclusions
+\chapter{Conclusions}
+\section{Analyzing Results}
+\section{Future Branchs}
+\section{Strengths and Weakness}
+
+%----------------------------------------------------------
+\listoffigures
+
+%----------------------------------------------------------
+% Bibliography
+\begin{thebibliography}{9}
+\bibitem{JamesBruce} \textit{Fast and Inexpensive Color Image Segmentation for Interactive Robots.} James Bruce, Tucker Balch, Manuela Veloso. IROS2000. School of Computer Science Carnegie Mellon University
+
+\bibitem{GabrielTerejanu} \textit{Extended Kalman Filter Tutorial} Gabriel A. Terejanu. IROS2000. Department of Computer Science and Engineering, University at Buffalo
+
+\end{thebibliography}
+
+%----------------------------------------------------------
+% Ending
+\backmatter
+
+\chapter{Afterword}
+
+\end{document}
