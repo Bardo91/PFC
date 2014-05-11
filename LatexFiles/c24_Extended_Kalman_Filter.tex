@@ -1,5 +1,5 @@
 %----------------------------------------------------------
-\subsection{System Model}
+\subsection{System Model} \label{subsec:system_model}
 
 \begin{equation} \label{eq:system_equation}
 P_{obj} = 
@@ -31,6 +31,7 @@ P_{obj} =
 %----------------------------------------------------------
 \subsection{Camera Model}
 	The model of the camera and its equations had been described on section 2.4. Matching Algorithm.
+	
 %----------------------------------------------------------
 \subsection{Extended Kalman Filter}
 
@@ -131,13 +132,57 @@ z_k =
 \end{equation}
 
 This observation equation only includes information about one camera, since now, this section splits in two. The first one dedicated to stereo tracking with a pair of non-parallel cameras. And the second one, using only one camera but in order to reduce the number of variables (Unless the EKF will became unstable with this equations, in chapter \ref{chap:c6_conclusions} there is a dissertation about this topic). \\
+
+%%% ------------------------------------------------------------------------------------------------
 \subsubsection{Tracking of ground objects}
+At this point, we suppose that in world coordinates the $z$ dimension of the target is constant, so the system state will be $x_k = (x, y, v_x, v_y)$. For this reason, $\partial z$ and $\partial v_z$ has no sense. Based on a lineal behavior in the system \ref{subsec:system_model} and on the observation equations \ref{eq:observation_equation}, the following matrix are the ones that define the EKF.
+
 \begin{equation}
-J_h = 
+J_f = 
 	\begin{pmatrix}
-		\frac{r_{12}x_c - r_{11}y_c}{x_c^2} & \frac{r_{22}x_c - r_{21}y_c}{x_c^2} & \frac{r_{32x_c - r_{31}y_c}}{x_c^2} & 0 & 0 & 0 \\
-		\frac{r_{13}x_c - r_{11}z_c}{x_c^2} & \frac{r_{23}x_c - r_{21}z_c}{x_c^2} & \frac{r_{33}x_c - r_{31}z_c}{x_c^2} & 0 & 0 & 0
+			1		&		0		&		\Delta_t	&		0					\\
+			0		&		1		&		0					&		\Delta_t	\\
+			0		&		0		&		1					&		0					\\
+			0		&		0		&		0					&		1
 	\end{pmatrix}
 \end{equation}
 
+\begin{equation}
+J_h = 
+	\begin{pmatrix}
+		\frac{r_{12}x_c - r_{11}y_c}{x_c^2} & \frac{r_{22}x_c - r_{21}y_c}{x_c^2}  & 0 & 0  \\
+		\frac{r_{13}x_c - r_{11}z_c}{x_c^2} & \frac{r_{23}x_c - r_{21}z_c}{x_c^2}  & 0 & 0 
+	\end{pmatrix}
+\end{equation}
+
+Such that, $(x_c, y_c, z_c)$ are related to camera position ob the object, $r_ij$ means the $(i,j)$ element of the rotation matrix of the camera.\\ 
+
+%%% ------------------------------------------------------------------------------------------------
 \subsubsection{Stereo Tracking}
+At this point, unlike previous section the target can move in three coordinates, so the system state will be $x_k = (x, y, z, v_x, v_y, v_z)$. Based on a lineal behavior in the system \ref{subsec:system_model} and on the observation equations \ref{eq:observation_equation}, the following matrix are the ones that define the EKF.
+
+\begin{equation}
+J_f = 
+	\begin{pmatrix}
+			1		&		0		&		0		&		\Delta_t	&		0					&		0					\\
+			0		&		1		&		0		&		0					&		\Delta_t	&		0					\\
+			0		&		0		&		1		&		0					&		0					&		\Delta_t	\\
+			0		&		0		&		0		&		1					&		0					&		0					\\
+			0		&		0		&		0		&		0					&		1					&		0					\\
+			0		&		0		&		0		&		0					&		0					&		1
+	\end{pmatrix}
+\end{equation}
+
+\begin{equation}
+J_h = 
+	\begin{pmatrix}
+		\frac{r_{12}^{c1}x^{c1}_c - r_{11}^{c1}y^{c1}_c}{{x^{c1}_c}^2} & \frac{r_{22}^{c1}x^{c1}_c - r_{21}^{c1}y^{c1}_c}{{x_c^{c1}}^2} & \frac{r_{32}^{c1}x^{c1}_c - r_{31}^{c1}y^{c1}_c}{{x_c^{c1}}^2} & 0 & 0 & 0 \\
+		\frac{r_{13}^{c1}x_c^{c1} - r_{11}^{c1}z_c^{c1}}{{x_c^{c1}}^2} & \frac{r_{23}^{c1}x_c^{c1} - r_{21}^{c1}z_c^{c1}}{{x_c^{c1}}^2} & \frac{r_{33}^{c1}x_c^{c1} - r_{31}^{c1}z_c^{c1}}{{x_c^{c1}}^2} & 0 & 0 & 0 \\
+		
+		\frac{r_{12}^{c2}x^{c2}_c - r_{11}^{c2}y^{c2}_c}{{x^{c2}_c}^2} & \frac{r_{22}^{c2}x^{c2}_c - r_{21}^{c2}y^{c2}_c}{{x_c^{c2}}^2} & \frac{r_{32}^{c2}x^{c2}_c - r_{31}^{c2}y^{c2}_c}{{x_c^{c2}}^2} & 0 & 0 & 0 \\
+		\frac{r_{13}^{c2}x_c^{c2} - r_{11}^{c2}z_c^{c2}}{{x_c^{c2}}^2} & \frac{r_{23}^{c2}x_c^{c2} - r_{21}^{c2}z_c^{c2}}{{x_c^{c2}}^2} & \frac{r_{33}^{c2}x_c^{c2} - r_{31}^{c2}z_c^{c2}}{{x_c^{c2}}^2} & 0 & 0 & 0 \\
+		
+	\end{pmatrix}
+\end{equation}
+
+And as above, $(x_c, y_c, z_c)$ are related to camera position ob the object, $r_ij$ means the $(i,j)$ element of the rotation matrix of the camera and $c_i$ superindex means related to camera i.
