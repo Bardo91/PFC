@@ -1,9 +1,36 @@
 %----------------------------------------------------------
 \subsection{System Model}
 
+\begin{equation} \label{eq:system_equation}
+P_{obj} = 
+	\begin{pmatrix}
+	x \\
+	y \\
+	z \\
+	\end{pmatrix}
+=
+	\begin{pmatrix}
+	c_x \\
+	c_y \\
+	c_z \\
+	\end{pmatrix}
++
+	\begin{pmatrix}
+	r_{11} & r_{12} & r_{13} \\
+	r_{21} & r_{22} & r_{23} \\
+	r_{31} & r_{32} & r_{33} \\
+	\end{pmatrix}
+*
+	\begin{pmatrix}
+	x_c \\
+	y_c \\
+	z_c \\
+	\end{pmatrix}
+\end{equation}
+
 %----------------------------------------------------------
 \subsection{Camera Model}
-
+	The model of the camera and its equations had been described on section 2.4. Matching Algorithm.
 %----------------------------------------------------------
 \subsection{Extended Kalman Filter}
 
@@ -11,11 +38,94 @@ The Kalman Filter is an iterative algorithm that obtain an estimation of a linea
 
 Consider the following nonlinear system described by the difference equation and the observation model with additive noise: \\
 
-%% FORMULA
+\begin{gather}
+x_k = f(x_{k-1}) + w_{k-1} \\
+z_k = h(x_k) + v_k
+\end{gather}
 
-%% Describir los pasos del ekf
+Been $x_k$ the state of the system, $z_k$ the observation state, and $f(·) \& h(·)$ the functions of both systems with their noise $ w_k ; v_k$. \\
+Every step of the EKF consist on two substeps called "Predictor" and "Corrector":
 
-%% Describir variables
-%x_k is the state vector z_k the observation vector f(.) process nonlinear vector function, h(.) observation nonlinear vector function and so on.
+\begin{itemize}
+   \item Predictor Step
+		\begin{gather}
+			x_k^{f} \approx f(x_{k-1}^{a}) \\
+			P_k^{f} = J_f(x_{k-1}^{a}) P_{k-1} J_f^{T}(x_{k-1}^{a}) + Q_{k-1}
+		\end{gather}
 
-%% Describir las funciones h y f
+	\item CorrectorStep
+		\begin{gather}
+			P_k = (I - K_k J_h(x_k^{f}))P_k^{f} \\
+			K_k = P_k^{f} J^{T}_h(x_k^{f}) (J_h(x_k^{f}) P_k^{f} J_h^{T}(x_k ^{f}) + R_k)^{-1} \\
+			x_k^{a} \approx x_k^{f} + K_k (z_k - h(x_k^{f}))
+		\end{gather}
+\end{itemize}
+
+In the previous ecuations, $J_h$ and $J_f$ are the Jacobian matrix of the system and observator. They are can be computed basing on the system and camera model as: \\
+
+\[J_h =  
+	\begin{pmatrix}
+		\frac{\partial h_1}{\partial x_1} & \dots & \frac{\partial h_1}{\partial x_n} \\
+		\vdots & \ddots & \vdots \\
+		\frac{\partial h_m}{\partial x_1} & \dots & \frac{\partial h_m}{\partial x_n}
+	\end{pmatrix}
+\]
+
+And so on with the $ f(·)$ function for the $J_f$ jacobian. Following paragraphs decribes the procedure of acquisition of both jacobians for this specific situation. \\
+
+\begin{equation} \label{eq:observation_equation}
+z_k =
+	\begin{pmatrix}
+		x_{img} \\
+		y_{img}
+	\end{pmatrix}
+\stackrel{\ref{eq:pinhole_cam_eq}}{=}
+	\begin{pmatrix}
+		f*\frac{y_c}{x_c} \\
+		f*\frac{z_c}{x_c}
+	\end{pmatrix}
+\end{equation}
+
+Getting \ref{eq:system_equation} and isolating the position vector of the target in the camera's base, then is possible to express the observation state in term of real system state.
+
+\begin{equation}
+\ref{eq:system_equation} \Rightarrow 
+	\begin{pmatrix}
+		x_c \\
+		y_c \\
+		z_c 
+	\end{pmatrix}
+=
+	\begin{pmatrix}
+		r_{11} & r_{21} & r_{31} \\
+		r_{12} & r_{22} & r_{32} \\
+		r_{13} & r_{23} & r_{33}
+	\end{pmatrix}
+*
+	\begin{pmatrix}
+		x - c_x \\
+		y - c_y \\
+		z - c_z
+	\end{pmatrix}
+\end{equation}
+
+So, individually:
+
+\begin{equation}
+\left\{ 
+	\begin{split}
+		x_c = r_{11}(x-c_x) + r_{21}(y-c_y) + r_{31}(z-c_z) \\
+		y_c = r_{12}(x-c_x) + r_{22}(y-c_y) + r_{32}(z-c_z) \\
+		z_c = r_{13}(x-c_x) + r_{23}(y-c_y) + r_{33}(z-c_z) 
+	\end{split} \right.
+\end{equation}
+
+Introducing this in equation \ref{eq:observation_equation}:
+
+\begin{equation}
+z_k =
+	\begin{pmatrix}
+		f·\frac{r_{12}(x-c_x) + r_{22}(y-c_y) + r_{32}(z-c_z)}{r_{11}(x-c_x) + r_{21}(y-c_y) + r_{31}(z-c_z)} \\
+		f·\frac{r_{13}(x-c_x) + r_{23}(y-c_y) + r_{33}(z-c_z)}{r_{11}(x-c_x) + r_{21}(y-c_y) + r_{31}(z-c_z)}
+	\end{pmatrix}
+\end{equation}
