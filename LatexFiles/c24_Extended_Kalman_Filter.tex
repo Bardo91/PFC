@@ -120,7 +120,7 @@ So, individually:
 	\end{split} \right.
 \end{equation}
 
-Introducing this in equation \ref{eq:observation_equation}:
+Introducing this in equation \ref{eq:observation_equation}.
 
 \begin{equation}
 z_k =
@@ -129,3 +129,15 @@ z_k =
 		f·\frac{r_{13}(x-c_x) + r_{23}(y-c_y) + r_{33}(z-c_z)}{r_{11}(x-c_x) + r_{21}(y-c_y) + r_{31}(z-c_z)}
 	\end{pmatrix}
 \end{equation}
+
+This observation equation only includes information about one camera, since now, this section splits in two. The first one dedicated to stereo tracking with a pair of non-parallel cameras. And the second one, using only one camera but in order to reduce the number of variables (Unless the EKF will became unstable with this equations, in chapter \ref{chap:c6_conclusions} there is a dissertation about this topic). \\
+\subsubsection{Tracking of ground objects}
+\begin{equation}
+J_h = 
+	\begin{pmatrix}
+		\frac{r_{12}x_c - r_{11}y_c}{x_c^2} & \frac{r_{22}x_c - r_{21}y_c}{x_c^2} & \frac{r_{32x_c - r_{31}y_c}}{x_c^2} & 0 & 0 & 0 \\
+		\frac{r_{13}x_c - r_{11}z_c}{x_c^2} & \frac{r_{23}x_c - r_{21}z_c}{x_c^2} & \frac{r_{33}x_c - r_{31}z_c}{x_c^2} & 0 & 0 & 0
+	\end{pmatrix}
+\end{equation}
+
+\subsubsection{Stereo Tracking}
