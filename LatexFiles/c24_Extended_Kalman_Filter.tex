@@ -1,8 +1,7 @@
 %----------------------------------------------------------
 \subsection{System Model} \label{subsec:system_model}
 
-The system consist on a quadrotor with a camera attached and a target that could be on the ground if there is only one vigilant, or "flying" if there's at least two cameras. The coordinates of the point can be described through the camera position thanks to the following equation.
-
+The system consist on a quadrotor with a camera attached and a target that could be on the ground if there is only one vigilant, or "flying" if there's at least two cameras. The coordinates of the point can be described through the camera position thanks to the following equation (Figure: \ref{fig:system_coordinates}).
 
 \begin{equation} \label{eq:system_equation}
 P_{obj} = 
@@ -31,6 +30,12 @@ P_{obj} =
 	\end{pmatrix}
 \end{equation}
 
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.5\linewidth]{../Images/c1/system_coordinates}
+\caption[System Coordinates]{System Coordinates}
+\label{fig:system_coordinates}
+\end{figure}
 
 
 %----------------------------------------------------------
