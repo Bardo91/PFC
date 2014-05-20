@@ -1,6 +1,9 @@
 %----------------------------------------------------------
 \subsection{System Model} \label{subsec:system_model}
 
+The system consist on a quadrotor with a camera attached and a target that could be on the ground if there is only one vigilant, or "flying" if there's at least two cameras. The coordinates of the point can be described through the camera position thanks to the following equation.
+
+
 \begin{equation} \label{eq:system_equation}
 P_{obj} = 
 	\begin{pmatrix}
@@ -28,6 +31,8 @@ P_{obj} =
 	\end{pmatrix}
 \end{equation}
 
+
+
 %----------------------------------------------------------
 \subsection{Camera Model}
 	The model of the camera and its equations had been described on section 2.4. Matching Algorithm.
@@ -35,7 +40,37 @@ P_{obj} =
 %----------------------------------------------------------
 \subsection{Extended Kalman Filter}
 
-The Kalman Filter is an iterative algorithm that obtain an estimation of a lineal dynamic system when sensors has white noise. In this case, the system is non-linear so it's used a variant called Extended Kalman Filter \cite{GabrielTerejanu} (or EKF ). To apply the algorithm it's necessary to use a linealization of the known system described previously.
+The Kalman Filter is an iterative algorithm that obtain an estimation of a lineal dynamic system when sensors has white noise. In this case, the system is non-linear so it's used a variant called Extended Kalman Filter \cite{GabrielTerejanu} (or EKF ). To apply the algorithm it's necessary to use a linealization of the known system described previously. That means that to apply this EKF we consider only the cinematic (velocities of the objects to update their position).
+
+\begin{equation}
+P_{obj} = 
+	\begin{pmatrix}
+	x_k \\
+	y_k \\
+	z_k \\
+	v^{x}_k \\
+	v^{y}_k \\
+	v^{z}_k \\
+	\end{pmatrix}
+=
+	\begin{pmatrix}
+	1 & 0 & 0 & \Delta{t} & 0 & 0 \\
+	0 & 1 & 0 & 0 & \Delta{t} & 0 \\
+	0 & 0 & 1 & 0 & 0 & \Delta{t} \\
+	0 & 0 & 0 & 1 & 0 & 0 \\
+	0 & 0 & 0 & 0 & 1 & 0 \\
+	0 & 0 & 0 & 0 & 0 & 1 \\
+	\end{pmatrix}
+*
+	\begin{pmatrix}
+	x_{k-1} \\
+	y_{k-1} \\
+	z_{k-1} \\
+	v^{x}_{k-1} \\
+	v^{y}_{k-1} \\
+	v^{z}_{k-1} \\
+	\end{pmatrix}
+\end{equation}
 
 Consider the following nonlinear system described by the difference equation and the observation model with additive noise: \\
 

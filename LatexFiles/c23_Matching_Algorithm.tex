@@ -16,7 +16,7 @@ Y^{img} = f*\frac{Z}{X}
 \end{split}
 \end{equation}
 
-Where f is the focal lenght of the camera; $X^{img}$ and $Y^{img}$ are the projection of the three dimensional point on the camera plane. This equations are in $\mathbb{R}^3$ the equations of 2 planes that cut in one line (The epipolar line). So in conclusion, every segmented object in the camera's images provide a pair of planes (or a single line). Ideally, if the Segmentation had no errors every pair os lines (One per camera for the same target) will cross in a point. However due to errors is almost improbable. That's why the matching algorithm links the objects by minimizing the distance between lines.
+Where f is the focal length of the camera; $X^{img}$ and $Y^{img}$ are the projection of the three dimensional point on the camera plane. This equations are in $\mathbb{R}^3$ the equations of 2 planes that cut in one line (The epipolar line). So in conclusion, every segmented object in the camera's images provide a pair of planes (or a single line). Ideally, if the Segmentation had no errors every pair os lines (One per camera for the same target) will cross in a point. However due to errors is almost improbable. That's why the matching algorithm links the objects by minimizing the distance between lines.
 
 \begin{figure}[h]
 \centering
@@ -31,3 +31,8 @@ To be precise, the obtained image in the computer hasn't got negative projection
 X^{img} = f*\frac{Y}{X} + u_0 \\
 Y^{img} = f*\frac{Z}{X} + v_0
 \end{align}
+
+
+Due to the noise in the pictures and in the positioning sensors, the pairs of lines would not ever cut. So that, the application minimize the distance between those lines.
+
+
