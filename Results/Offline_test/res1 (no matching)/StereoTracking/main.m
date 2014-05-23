@@ -35,3 +35,10 @@ plot(       ni:nf, posMed(ni:nf,1),'r',...
             ni:nf, posMed(ni:nf,2),'g',...
             ni:nf, posMed(ni:nf,3),'b');
 title('tracked trajectory using media');
+
+
+
+%% 3D plots
+figure(3);
+plot3(      real_log(ni:nf,2), real_log(ni:nf,3), real_log(ni:nf,4), 'b',...
+            station_out_log(ni:nf,2), station_out_log(ni:nf,3), station_out_log(ni:nf,4), 'r');

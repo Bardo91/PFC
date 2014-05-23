@@ -20,14 +20,11 @@ figure(3);
 plot(station_in_log(:,3));
 title('Timespan');
 
-realMaxX = max(quad_out_log(20000:nO,1));
-realMinX = min(quad_out_log(20000:nO,1));
-trackMaxX = max(station_out_log(1:mS,1));
-trackMinX = min(station_out_log(1:mS,1));
 
+%% 3D plots
+Z1(1:nO) = 0;
+Z2(1:nS) = 0;
 
-realMaxY = max(quad_out_log(20000:nO,2));
-realMinY = min(quad_out_log(20000:nO,2));
-trackMaxY = max(station_out_log(1:mS,2));
-trackMinY = min(station_out_log(1:mS,2));
-
+figure(3);
+plot3(      quad_out_log(1:nO,1), quad_out_log(1:nO,2), Z1, 'b',...
+            station_out_log(1:nS,1), station_out_log(1:nS,2), Z2, 'r');
