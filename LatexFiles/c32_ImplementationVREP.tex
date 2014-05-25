@@ -27,7 +27,7 @@ Both ground station and objects in the simulation generate a LOG in order to ana
 %----------------------------------------------------------
 \subsection{Simulation 1 - Simple ground camera tracking. Vertical camera}
 \subsubsection{Set up}
-This Scene has basically one quad rotor and one target (Figure: \ref{fig:VREP_scene_example}). The Red sphere is moving on the floor while the quad's camera capture pictures and the on board (simulated) computer process it and command the drone in order to follow the target. In this simulation the camera is facing the ground.
+This Scene has basically one quad rotor and one target (Figure: \ref{fig:VREP_scene_example}). The Red sphere is moving on the floor (Describing a circle) while the quad's camera capture pictures and the on board (simulated) computer process it and command the drone in order to follow the target. In this simulation the camera is facing the ground.
 
 \subsubsection{Test and results}
 
@@ -38,7 +38,7 @@ This Scene has basically one quad rotor and one target (Figure: \ref{fig:VREP_sc
 %----------------------------------------------------------
 \subsection{Simulation 2 - Simple ground camera tracking. Oblique camera}
 \subsubsection{Set up}
-This Scene has basically one quad rotor and one target. The Red sphere is moving on the floor while the quad's camera capture pictures and the on board (simulated) computer process it and command the drone in order to follow the target. In this case, the camera is not facing directly the ground, now it's oblique (45º from the previous; Figure: \ref{fig:ground_tracking_scene_oblique}).
+This Scene has basically one quad rotor and one target. The Red sphere is moving on the floor (Describing a curve) while the quad's camera capture pictures and the on board (simulated) computer process it and command the drone in order to follow the target. In this case, the camera is not facing directly the ground, now it's oblique (45 degrees from the previous; Figure: \ref{fig:ground_tracking_scene_oblique}).
 
 \begin{figure}[ph]
 	\centering
@@ -51,12 +51,25 @@ This Scene has basically one quad rotor and one target. The Red sphere is moving
 
 
 \begin{figure}
-\centering
+	\centering
+	\begin{subfigure}[b]{0.4\linewidth}
+		\centering
+		\includegraphics[width=\linewidth]{../Images/c3/sim2_traj_ori}
+		\caption{Ground tracking - Original trajectory}
+		\label{fig:sim2_traj_ori}
+	\end{subfigure}
+	~
+	\begin{subfigure}[b]{0.4\linewidth}
+		\centering
+		\includegraphics[width=\linewidth]{../Images/c3/sim2_traj_track}
+		\caption{Ground tracking - Tracked trajectory}
+		\label{fig:sim2_traj_track}
+	\end{subfigure}
 
 \end{figure}
 
 
-\begin{figure}[ph]
+\begin{figure}[ht]
 \centering
 \includegraphics[width=0.7\linewidth]{../Images/c3/sim2_traj_both_3d}
 \caption{Ground tracking - Oblique Camera - 3D trajectory}
