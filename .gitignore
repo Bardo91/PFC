@@ -1,0 +1,9 @@
+/LatexFiles/*.aux
+/LatexFiles/*.lof
+/LatexFiles/*.log
+/LatexFiles/*.out
+/LatexFiles/*.pdf
+/LatexFiles/*.gz
+/LatexFiles/*.toc
+/*.lnk
+/*.tps
