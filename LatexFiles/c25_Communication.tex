@@ -23,5 +23,5 @@ This section briefly describes the architecture of communication. In order to be
 \end{wrapfigure}
 
 To communicate between devices every application (or program) use a sockets \cite{SocketWiki}. Particularly, an implementation developed initially for this project that can be found in BOViL \cite{BOViL}. Sockets are configured with the TCP/IP protocol \cite{TCPIP}. \\
-Every step of the program, after the segmentation of the image, an array of centroids is generated that correspond to the targets detected by quadrotor's camera. This array is send throught the socket byte per byte (or character per character) following the format of the image \ref{fig:message_structure}. For example $\{14;01;123-231,142-22,...,600-232\}$
+Every step of the program, after the segmentation of the image, an array of centroids is generated that correspond to the targets detected by quadrotor's camera. This array is send through the socket byte per byte (or character per character) following this format \{App;ID;msg\}. For example $\{14;01;123-231,142-22,...,600-232\}$
 

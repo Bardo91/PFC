@@ -11,8 +11,8 @@ Firstly, in this article it's assumed that camera's behavior is governed by the 
 
 \begin{equation} \label{eq:pinhole_cam_eq}
 \begin{split}
-X^{img} = f*\frac{Y}{X} \\
-Y^{img} = f*\frac{Z}{X}
+X^{img} = - f*\frac{X}{Z} \\
+Y^{img} = f*\frac{Y}{Z}
 \end{split}
 \end{equation}
 
@@ -28,8 +28,8 @@ Where f is the focal length of the camera; $X^{img}$ and $Y^{img}$ are the proje
 To be precise, the obtained image in the computer hasn't got negative projection. The values on the image are displaced vertically and horizontally. This displacement is stored as the camera´s image centroid or $(u_0, v_0)$. Eventually, equations are: \\
 
 \begin{align}
-X^{img} = f*\frac{Y}{X} + u_0 \\
-Y^{img} = f*\frac{Z}{X} + v_0
+X^{img} = u_0 - f*\frac{Y}{X}\\
+Y^{img} = v_0 + f*\frac{Z}{X}
 \end{align}
 
 

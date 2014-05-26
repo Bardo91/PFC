@@ -166,8 +166,8 @@ Introducing this in equation \ref{eq:observation_equation}.
 \begin{equation}
 z_k =
 	\begin{pmatrix}
-		f·\frac{r_{12}(x-c_x) + r_{22}(y-c_y) + r_{32}(z-c_z)}{r_{11}(x-c_x) + r_{21}(y-c_y) + r_{31}(z-c_z)} \\
-		f·\frac{r_{13}(x-c_x) + r_{23}(y-c_y) + r_{33}(z-c_z)}{r_{11}(x-c_x) + r_{21}(y-c_y) + r_{31}(z-c_z)}
+		-f·\frac{r_{11}(x-c_x) + r_{21}(y-c_y) + r_{31}(z-c_z)}{r_{13}(x-c_x) + r_{23}(y-c_y) + r_{33}(z-c_z)} \\
+		f·\frac{r_{12}(x-c_x) + r_{22}(y-c_y) + r_{32}(z-c_z)}{r_{13}(x-c_x) + r_{23}(y-c_y) + r_{33}(z-c_z)}
 	\end{pmatrix}
 \end{equation}
 
@@ -190,8 +190,8 @@ J_f =
 \begin{equation}
 J_h = 
 	\begin{pmatrix}
-		\frac{r_{12}x_c - r_{11}y_c}{x_c^2} & \frac{r_{22}x_c - r_{21}y_c}{x_c^2}  & 0 & 0  \\
-		\frac{r_{13}x_c - r_{11}z_c}{x_c^2} & \frac{r_{23}x_c - r_{21}z_c}{x_c^2}  & 0 & 0 
+		-\frac{r_{11}x_c - r_{13}y_c}{x_c^2} & -\frac{r_{21}x_c - r_{23}y_c}{x_c^2}  & 0 & 0  \\
+		\frac{r_{12}x_c - r_{13}z_c}{x_c^2} & \frac{r_{22}x_c - r_{23}z_c}{x_c^2}  & 0 & 0 
 	\end{pmatrix}
 \end{equation}
 
@@ -216,13 +216,13 @@ J_f =
 \begin{equation}
 J_h = 
 	\begin{pmatrix}
-		\frac{r_{12}^{c1}x^{c1}_c - r_{11}^{c1}y^{c1}_c}{{x^{c1}_c}^2} & \frac{r_{22}^{c1}x^{c1}_c - r_{21}^{c1}y^{c1}_c}{{x_c^{c1}}^2} & \frac{r_{32}^{c1}x^{c1}_c - r_{31}^{c1}y^{c1}_c}{{x_c^{c1}}^2} & 0 & 0 & 0 \\
-		\frac{r_{13}^{c1}x_c^{c1} - r_{11}^{c1}z_c^{c1}}{{x_c^{c1}}^2} & \frac{r_{23}^{c1}x_c^{c1} - r_{21}^{c1}z_c^{c1}}{{x_c^{c1}}^2} & \frac{r_{33}^{c1}x_c^{c1} - r_{31}^{c1}z_c^{c1}}{{x_c^{c1}}^2} & 0 & 0 & 0 \\
+		\frac{r_{11}^{c1}x^{c1}_c - r_{13}^{c1}y^{c1}_c}{{x^{c1}_c}^2} & \frac{r_{21}^{c1}x^{c1}_c - r_{23}^{c1}y^{c1}_c}{{x_c^{c1}}^2} & \frac{r_{31}^{c1}x^{c1}_c - r_{33}^{c1}y^{c1}_c}{{x_c^{c1}}^2} & 0 & 0 & 0 \\
+		\frac{r_{12}^{c1}x_c^{c1} - r_{13}^{c1}z_c^{c1}}{{x_c^{c1}}^2} & \frac{r_{22}^{c1}x_c^{c1} - r_{23}^{c1}z_c^{c1}}{{x_c^{c1}}^2} & \frac{r_{32}^{c1}x_c^{c1} - r_{33}^{c1}z_c^{c1}}{{x_c^{c1}}^2} & 0 & 0 & 0 \\
 		
-		\frac{r_{12}^{c2}x^{c2}_c - r_{11}^{c2}y^{c2}_c}{{x^{c2}_c}^2} & \frac{r_{22}^{c2}x^{c2}_c - r_{21}^{c2}y^{c2}_c}{{x_c^{c2}}^2} & \frac{r_{32}^{c2}x^{c2}_c - r_{31}^{c2}y^{c2}_c}{{x_c^{c2}}^2} & 0 & 0 & 0 \\
-		\frac{r_{13}^{c2}x_c^{c2} - r_{11}^{c2}z_c^{c2}}{{x_c^{c2}}^2} & \frac{r_{23}^{c2}x_c^{c2} - r_{21}^{c2}z_c^{c2}}{{x_c^{c2}}^2} & \frac{r_{33}^{c2}x_c^{c2} - r_{31}^{c2}z_c^{c2}}{{x_c^{c2}}^2} & 0 & 0 & 0 \\
-		
+		\frac{r_{11}^{c2}x^{c2}_c - r_{13}^{c2}y^{c2}_c}{{x^{c2}_c}^2} & \frac{r_{21}^{c2}x^{c2}_c - r_{23}^{c2}y^{c2}_c}{{x_c^{c2}}^2} & \frac{r_{31}^{c2}x^{c2}_c - r_{33}^{c2}y^{c2}_c}{{x_c^{c2}}^2} & 0 & 0 & 0 \\
+		\frac{r_{12}^{c2}x_c^{c2} - r_{13}^{c2}z_c^{c2}}{{x_c^{c2}}^2} & \frac{r_{22}^{c2}x_c^{c2} - r_{23}^{c2}z_c^{c2}}{{x_c^{c2}}^2} & \frac{r_{32}^{c2}x_c^{c2} - r_{33}^{c2}z_c^{c2}}{{x_c^{c2}}^2} & 0 & 0 & 0 \\
+				
 	\end{pmatrix}
 \end{equation}
 
-And as above, $(x_c, y_c, z_c)$ are related to camera position ob the object, $r_ij$ means the $(i,j)$ element of the rotation matrix of the camera and $c_i$ superindex means related to camera i.
+And as above, $(x_c, y_c, z_c)$ are related to camera position of the object, $r_ij$ means the $(i,j)$ element of the rotation matrix of the camera and $c_i$ superindex means related to camera i.
