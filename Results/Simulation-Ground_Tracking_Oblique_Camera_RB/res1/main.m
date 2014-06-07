@@ -13,43 +13,24 @@ quad_out_logB = load('out_Log_vrep1.txt');
 
 %%----------------------------------------------------------------------------------------------------------
 figure(1);
-subplot(2,2,1);
+subplot(1,2,1);
 plot(       1:nOR, quad_out_logR(1:nOR,1),'b',...
             1:nOR, quad_out_logR(1:nOR,2),'r');
 title('Original trajectory R');
-subplot(2,2,2);
+subplot(1,2,2);
 plot(       1:nTR, station_out_logR(1:nTR,1),'b',...
             1:nTR, station_out_logR(1:nTR,2),'r');
 title('tracked trajectory R ');
-% Calculate error
-stepR = nOR/nTR;
-errorR = [];
-for i=1:nTR
-   errorR = [errorR ; sqrt( (quad_out_logR(round(i*stepR),1) - station_out_logR(i,1))^2 + ...
-                            (quad_out_logR(round(i*stepR),2) - station_out_logR(i,2))^2)]; 
-end
-subplot(2,2,3);
-plot(errorR);
 
 figure(2);
-subplot(2,2,1);
+subplot(1,2,1);
 plot(       1:nOB, quad_out_logB(1:nOB,1),'b',...
             1:nOB, quad_out_logB(1:nOB,2),'r');
 title('Original trajectory B');
-subplot(2,2,2);
+subplot(1,2,2);
 plot(       1:nTB, station_out_logB(1:nTB,1),'b',...
             1:nTB, station_out_logB(1:nTB,2),'r');
 title('tracked trajectory B ');
-
-% Calculate errror
-stepB = nOB/nTB;
-errorB = [];
-for i=1:nTB
-   errorB = [errorB ; sqrt( (quad_out_logB(round(i*stepB),1) - station_out_logB(i,1))^2 + ...
-                            (quad_out_logB(round(i*stepB),2) - station_out_logB(i,2))^2)]; 
-end
-subplot(2,2,3);
-plot(errorB);
 
 %%----------------------------------------------------------------------------------------------------------
 
@@ -134,6 +115,7 @@ plot3(      quad_out_logR(1:nOR,1), quad_out_logR(1:nOR,2), Z1R, 'b',...
 % plot3(      quad_out_logR(1:nOR,1), quad_out_logR(1:nOR,2), Z1R, 'b',...
 %             station_out_logR(1:testN,1), station_out_logR(1:testN,2), Z2R(1:testN), 'r',...
 %             X_bruteR(1:nTR, 1), X_bruteR(1:nTR, 2), X_bruteR(1:nTR, 3), 'g');        
+title('3D Trajectories R');
        
  %% 3D plots
 Z1B(1:nOB) = 0;
@@ -146,4 +128,4 @@ plot3(      quad_out_logB(1:nOB,1), quad_out_logB(1:nOB,2), Z1B, 'b',...
 % plot3(      quad_out_logB(1:nOB,1), quad_out_logB(1:nOB,2), Z1B, 'b',...
 %             station_out_logB(1:testN,1), station_out_logB(1:testN,2), Z2B(1:testN), 'r',...
 %             X_bruteB(1:nTB, 1), X_bruteB(1:nTB, 2), X_bruteB(1:nTB, 3), 'g');        
-        
+title('3D Trajectories B');
