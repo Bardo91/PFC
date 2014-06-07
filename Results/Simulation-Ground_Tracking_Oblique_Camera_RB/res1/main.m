@@ -7,34 +7,56 @@ quad_out_logR = load('out_Log_vrep0.txt');
 quad_out_logB = load('out_Log_vrep1.txt');
 
 [nOR, mOR] = size(quad_out_logR);
-[nSR, mSR] = size(station_out_logR);
+[nTR, mTR] = size(station_out_logR);
 [nOB, mOB] = size(quad_out_logB);
-[nSB, mSB] = size(station_out_logB);
+[nTB, mTB] = size(station_out_logB);
 
-
+%%----------------------------------------------------------------------------------------------------------
 figure(1);
-subplot(1,2,1);
+subplot(2,2,1);
 plot(       1:nOR, quad_out_logR(1:nOR,1),'b',...
             1:nOR, quad_out_logR(1:nOR,2),'r');
 title('Original trajectory R');
-subplot(1,2,2);
-plot(       1:nSR, station_out_logR(1:nSR,1),'b',...
-            1:nSR, station_out_logR(1:nSR,2),'r');
+subplot(2,2,2);
+plot(       1:nTR, station_out_logR(1:nTR,1),'b',...
+            1:nTR, station_out_logR(1:nTR,2),'r');
 title('tracked trajectory R ');
+% Calculate error
+stepR = nOR/nTR;
+errorR = [];
+for i=1:nTR
+   errorR = [errorR ; sqrt( (quad_out_logR(round(i*stepR),1) - station_out_logR(i,1))^2 + ...
+                            (quad_out_logR(round(i*stepR),2) - station_out_logR(i,2))^2)]; 
+end
+subplot(2,2,3);
+plot(errorR);
 
 figure(2);
-subplot(1,2,1);
-plot(       1:nSB, station_out_logB(1:nSB,1),'b',...
-            1:nSB, station_out_logB(1:nSB,2),'r');
-title('tracked trajectory B ');
-subplot(1,2,2);
+subplot(2,2,1);
 plot(       1:nOB, quad_out_logB(1:nOB,1),'b',...
             1:nOB, quad_out_logB(1:nOB,2),'r');
 title('Original trajectory B');
+subplot(2,2,2);
+plot(       1:nTB, station_out_logB(1:nTB,1),'b',...
+            1:nTB, station_out_logB(1:nTB,2),'r');
+title('tracked trajectory B ');
+
+% Calculate errror
+stepB = nOB/nTB;
+errorB = [];
+for i=1:nTB
+   errorB = [errorB ; sqrt( (quad_out_logB(round(i*stepB),1) - station_out_logB(i,1))^2 + ...
+                            (quad_out_logB(round(i*stepB),2) - station_out_logB(i,2))^2)]; 
+end
+subplot(2,2,3);
+plot(errorB);
+
+%%----------------------------------------------------------------------------------------------------------
+
 % figure(3);
 % plot(station_in_log(:,3));
 % title('Timespan');
-% medTime = sum(station_in_log(:,3))/nS;
+% medTime = sum(station_in_log(:,3))/nT;
 % fps = 1/medTime
 
 %% "Brute triangulation Station info_log"
@@ -44,7 +66,7 @@ f = 300; % Aprox
 
 X_bruteR = [];
 z = 0.00;
-for i = 1:nSR
+for i = 1:nTR
     C = station_in_logR(i, 4:6)';
      R =     rotx(station_in_logR(i,7)*180/pi)*...
              roty(station_in_logR(i,8)*180/pi)*...
@@ -61,7 +83,7 @@ end
 
 X_bruteB = [];
 z = 0.00;
-for i = 1:nSB
+for i = 1:nTB
     C = station_in_logB(i, 4:6)';
      R =     rotx(station_in_logB(i,7)*180/pi)*...
              roty(station_in_logB(i,8)*180/pi)*...
@@ -102,25 +124,26 @@ end
 
 %% 3D plots
 Z1R(1:nOR) = 0;
-Z2R(1:nSR) = 0;
+Z2R(1:nTR) = 0;
 
-testN  = nSR;
+testN  = nTR;
 figure(3);
 subplot(1,2,1);
 plot3(      quad_out_logR(1:nOR,1), quad_out_logR(1:nOR,2), Z1R, 'b',...
             station_out_logR(1:testN,1), station_out_logR(1:testN,2), Z2R(1:testN), 'r');
-
+% plot3(      quad_out_logR(1:nOR,1), quad_out_logR(1:nOR,2), Z1R, 'b',...
+%             station_out_logR(1:testN,1), station_out_logR(1:testN,2), Z2R(1:testN), 'r',...
+%             X_bruteR(1:nTR, 1), X_bruteR(1:nTR, 2), X_bruteR(1:nTR, 3), 'g');        
+       
  %% 3D plots
 Z1B(1:nOB) = 0;
-Z2B(1:nSB) = 0;
+Z2B(1:nTB) = 0;
 
-testN  = nSB;
+testN  = nTB;
 subplot(1,2,2);
 plot3(      quad_out_logB(1:nOB,1), quad_out_logB(1:nOB,2), Z1B, 'b',...
             station_out_logB(1:testN,1), station_out_logB(1:testN,2), Z2B(1:testN), 'r');
-
-        
-% plot3(      quad_out_log(1:nO,1), quad_out_log(1:nO,2), Z1, 'b',...
-%             station_out_log(1:testN,1), station_out_log(1:testN,2), Z2(1:testN), 'r',...
-%             X_brute(1:nS, 1), X_brute(1:nS, 2), X_brute(1:nS, 3), 'g');        
+% plot3(      quad_out_logB(1:nOB,1), quad_out_logB(1:nOB,2), Z1B, 'b',...
+%             station_out_logB(1:testN,1), station_out_logB(1:testN,2), Z2B(1:testN), 'r',...
+%             X_bruteB(1:nTB, 1), X_bruteB(1:nTB, 2), X_bruteB(1:nTB, 3), 'g');        
         
