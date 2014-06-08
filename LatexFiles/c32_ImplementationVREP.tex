@@ -88,6 +88,7 @@ This Scene has basically one quad rotor and one target. The Red sphere is moving
 \end{figure}
 
 \subsubsection{Test and results}
+\label{lab:sim2_test_results}
 In this test the maximum error, apart from the beginning that is large initially due to the initial state of EKF until it's established, is $\sim$ 8 cm due to the speediness of the target at the curve. Lately the this error is reduced to $\sim$ 1-2 cm. The fist figure (\ref{fig:sim2_traj_ori} and \ref{fig:sim2_traj_track}) that contains 2 pictures, shows X and Y coordinate of the a) real trajectory and b) the results of EKF algorithm. The last figure of this simulation shows the 3D path that was described by the target (Blue line) and the tracked trajectory (Red line); Figure \ref{fig:sim2_traj_both_3d}.
 
 \begin{figure}[h]
@@ -128,13 +129,25 @@ This simulation is the first one with two quadcopters. The Red sphere is moving 
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=0.7\linewidth]{../Images/c3/sim3_set_up}
-	\caption{Stereo tracking - Set up}
-	\label{fig:sim3_set_up}
+	\begin{subfigure}[b]{0.4\linewidth}
+	\centering
+		\includegraphics[width=\linewidth]{../Images/c3/sim3_set_up}
+		\caption{Stereo tracking - Set up}
+		\label{fig:sim3_set_up}
+	\end{subfigure}
+	~
+	\begin{subfigure}[b]{0.4\linewidth}
+		\centering
+		\includegraphics[width=\linewidth]{../Images/c3/sim3_traj_both_3d}
+		\caption{Stereo tracking - 3D trajectory}
+		\label{fig:sim3_traj_both_3d}
+	\end{subfigure}
 \end{figure}
 
 \subsubsection{Test and results}
 
+	In this simulation the results converge fastly from the initial state to the target's position. Here the max error is $\sim$ 4 cm. and medium error is $\sim$ 1 cm. Max error is found at the beginning of the second curve. That is because the target increase it's velocity considerably (And the EKF suppose a linear movement). This, together with the dynamic behavior of the quadrotors, make the path-line seems a sawtooth (Figure: \ref{fig:sim3_traj_both_3d}).
+	
 \begin{figure}[h]
 	\centering
 	\begin{subfigure}[b]{0.4\linewidth}
@@ -154,21 +167,15 @@ This simulation is the first one with two quadcopters. The Red sphere is moving 
 \end{figure}
 
 
-\begin{figure}[h]
-\centering
-\includegraphics[width=0.7\linewidth]{../Images/c3/sim3_traj_both_3d}
-\caption{Stereo tracking - 3D trajectory}
-\label{fig:sim3_traj_both_3d}
-\end{figure}
+
 
 %-------------------------------------------------------------------------------------------------------
 %-------------------------------------------------------------------------------------------------------
 %-------------------------------------------------------------------------------------------------------
 \subsection{Ground Tracking - Multiple targets}
 \subsubsection{Set up}
-
-Figure: \ref{fig:sim4_set_up}).
-
+ On this experiment, there is again only one quadrotor(Figure: \ref{fig:sim4_set_up}). Instead, one more target was added (Blue sphere). Both objects describe the curve, keeping their relative distance (Moving as a rigid solid, so the blue is always on the left-side of the path). the watcher's camera is also oblique (45 degrees) and spheres keeps the same speed of the previous simulation.
+ 
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=0.7\linewidth]{../Images/c3/sim4_set_up}
@@ -178,30 +185,40 @@ Figure: \ref{fig:sim4_set_up}).
 
 \subsubsection{Test and results}
 
-\begin{figure}[h]
-	\centering
-	\centering
-	\includegraphics[width=\linewidth]{../Images/c3/sim4_redtarget}
-	\caption{Multiple Targets - Red target}
-	\label{fig:sim4_redtarget}	
-\end{figure}
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=\linewidth]{../Images/c3/sim4_bluetarget}
-	\caption{Multiple Targets - Blue target}
-	\label{fig:sim4_bluetarget}
-\end{figure}
-
+	Firstly, figures \ref{fig:sim4_redtarget} and \ref{fig:sim4_bluetarget} shows the X and Y coordinateguardias of the targets (Both real and estimate). Secondly, figure \ref{fig:sim4_3dtraj} shows the 3D path-lines of both red and blue spheres. \\
+	
+	The results of red tracking are quite good and similar to the ones explained in "Ground tracking - Oblique camera" \ref{lab:sim2_test_results}. The tracking of the blue sphere seems to be wrong. However, it is not. This deviation is due to lack of information. The camera didn't capture the whole blue sphere \ref{fig:sim4_centroid_objs}, causing an error between the centroid of the recognized part of the sphere in the image and the real one. That's why the tracked-path is always displaced a few centimeters from the real one. The maximum error is $\sim$ 20 cm and the medium is $\sim$ 6 cm.
 
 \begin{figure}[h]
-\centering
-\includegraphics[width=0.7\linewidth]{../Images/c3/sim4_3dtraj}
-\caption{Multiple Targets - 3D trajectory}
-\label{fig:sim4_3dtraj}
+	\centering
+	\begin{subfigure}[b]{0.45\linewidth}
+		\centering
+		\includegraphics[width=\linewidth]{../Images/c3/sim4_redtarget}
+		\caption{Multiple Targets - Red target}
+		\label{fig:sim4_redtarget}	
+	\end{subfigure}
+	~
+	\begin{subfigure}[b]{0.45\linewidth}
+		\centering
+		\includegraphics[width=\linewidth]{../Images/c3/sim4_bluetarget}
+		\caption{Multiple Targets - Blue target}
+		\label{fig:sim4_bluetarget}
+	\end{subfigure}
 \end{figure}
+
 \begin{figure}[h]
-\centering
-\includegraphics[width=0.4\linewidth]{../Images/c3/sims_two_object_centroid_out}
-\caption{Multiple Targets - Objects centroids on Image}
-\label{fig:sim4_centroid_objs}
+	\centering
+	\begin{subfigure}[b]{0.6\linewidth}
+		\centering
+		\includegraphics[width=\linewidth]{../Images/c3/sim4_3dtraj}
+		\caption{Multiple Targets - 3D trajectory}
+		\label{fig:sim4_3dtraj}
+	\end{subfigure}
+	~
+	\begin{subfigure}[b]{0.2\linewidth}
+		\centering
+		\includegraphics[width=\linewidth]{../Images/c3/sims_two_object_centroid_out}
+		\caption{Multiple Targets - Objects centroids on Image}
+		\label{fig:sim4_centroid_objs}
+	\end{subfigure}
 \end{figure}
