@@ -1,6 +1,13 @@
-On previous sections every fragment of the system was described. Figure \ref{fig:System_Architecture} give a look to the common architecture of the system. It's composed for a number of quads rotors that send to the computer related to their cameras position of the objects that the detect through a simple server-client communication by WiFi wireless devices.
+On previous sections every fragment of the system was described. Figure \ref{fig:System_Architecture} give a look to the common architecture of the system. The basic structure is composed of:
 
-% 666 TODO: terminar
+\begin{itemize}
+  \item Set of quadrotors.
+  \item Groundstation.
+  \item Access Point (AP).
+  \item Targets.
+\end{itemize}
+
+Every quadrotors has a camera and an embedded computer that runs the algorithm. Every frame, the algorithm segment the image and send to the ground station through the AP. The station process the received data and make an step on the tracking algorithm (EKF).
 
 % System architecture image
 \begin{figure}[hb]
@@ -9,3 +16,22 @@ On previous sections every fragment of the system was described. Figure \ref{fig
 	\caption{System Architecture}
 	\label{fig:System_Architecture}
 \end{figure}
+
+\subsection{Quadrotors Software}
+% 666 TODO: terminar
+\subsection{Ground Station Software}
+% 666 TODO: terminar
+\subsection{Conclusion}
+The functionality of both quads and station can be easily modified by adding threads with access to the socket. For example, making the station to send the results of the EKF is as easier as send a message through the socket using the interface provided by BOViL \cite{BOViL}. 
+
+In addition, the algorithm is designed with abstract interfaces from beginning, so any part of the architecture could be replaced by others with the same interface, for example:
+
+\begin{itemize}
+  \item Set of quadrotors $\Longrightarrow$ Set of quadrotors and ground vehicles.
+  \item Ground Station $\Longrightarrow$ Multiple Ground Stations, cloud computation \cite{Cloud_computing} or even "inside quads" Station.
+  \item Access Point (AP) $\Longrightarrow$ GSM modules (For cloud computing or if operation is far away from the Station).
+  \item Targets.
+\end{itemize}
+
+
+% 666 TODO: terminar
