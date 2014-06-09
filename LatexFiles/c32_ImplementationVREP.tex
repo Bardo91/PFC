@@ -176,7 +176,7 @@ This simulation is the first one with two quadcopters. The Red sphere is moving 
 \subsubsection{Set up}
  On this experiment, there is again only one quadrotor(Figure: \ref{fig:sim4_set_up}). Instead, one more target was added (Blue sphere). Both objects describe the curve, keeping their relative distance (Moving as a rigid solid, so the blue is always on the left-side of the path). the watcher's camera is also oblique (45 degrees) and spheres keeps the same speed of the previous simulation.
  
-\begin{figure}[h]
+\begin{figure}[ht]
 	\centering
 	\includegraphics[width=0.7\linewidth]{../Images/c3/sim4_set_up}
 	\caption{Multiple Targets - Set Up}
@@ -189,7 +189,7 @@ This simulation is the first one with two quadcopters. The Red sphere is moving 
 	
 	The results of red tracking are quite good and similar to the ones explained in "Ground tracking - Oblique camera" \ref{lab:sim2_test_results}. The tracking of the blue sphere seems to be wrong. However, it is not. This deviation is due to lack of information. The camera didn't capture the whole blue sphere \ref{fig:sim4_centroid_objs}, causing an error between the centroid of the recognized part of the sphere in the image and the real one. That's why the tracked-path is always displaced a few centimeters from the real one. The maximum error is $\sim$ 20 cm and the medium is $\sim$ 6 cm.
 
-\begin{figure}[h]
+\begin{figure}[ht]
 	\centering
 	\begin{subfigure}[b]{0.45\linewidth}
 		\centering
@@ -206,7 +206,7 @@ This simulation is the first one with two quadcopters. The Red sphere is moving 
 	\end{subfigure}
 \end{figure}
 
-\begin{figure}[h]
+\begin{figure}[ht]
 	\centering
 	\begin{subfigure}[b]{0.6\linewidth}
 		\centering
