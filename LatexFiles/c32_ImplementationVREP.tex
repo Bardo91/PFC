@@ -4,13 +4,13 @@
 \subsection{Structure of section}
 Every section of this chapter is a simulation of the future application. Every simulation is has his own scene (Showed in this document with some images, for example as in Figure: \ref{fig:VREP_scene_example}). This scenes contains the requited quadrotors and targets in order to test the behavior previous real results. Results of vision algorithm is showed in the vrep console(Figure: \ref{fig:Ground_Tracking_VREP_Console}). \\
 
-\begin{figure}[h]
+\begin{figure}[ht]
 	\includegraphics[width=0.7\textwidth,natwidth=1366,natheight=728]{../Images/c3/ground_tracking_scene.png}
 	\caption{Ground Tracking Scene}
 	\label{fig:VREP_scene_example}
 \end{figure}
 
-\begin{figure}[h]
+\begin{figure}[ht]
 	\includegraphics[width=0.7\textwidth,natwidth=677,natheight=342]{../Images/c3/ground_tracking_vrep_console.png}
 	\caption{Ground Tracking V-REP Console}
 	\label{fig:Ground_Tracking_VREP_Console}
@@ -18,7 +18,7 @@ Every section of this chapter is a simulation of the future application. Every s
 
 There is another component in the simulations, the ground station, with the aim to make the most realistic simulations, this ground station is exactly the same as real test ground station. This is possible due to the abstraction of the communication through sockets. The ground station has a simple interface to get some information about the progress. An example of this interface is shown in the Figure: \ref{fig:Ground_Tracking_Server_Console}.
 
-\begin{figure}[h]
+\begin{figure}[ht]
 	\includegraphics[width=0.7\textwidth,natwidth=677,natheight=342]{../Images/c3/ground_tracking_server_console.png}
 	\caption{Ground Tracking Server Console}
 	\label{fig:Ground_Tracking_Server_Console}
@@ -33,7 +33,7 @@ Both ground station and objects in the simulation generate a LOG in order to ana
 \subsubsection{Set up}
 This Scene has basically one quad rotor and one target (Figure: \ref{fig:VREP_scene_example}). The Red sphere is moving on the floor (Describing a circle) while the quad's camera captures pictures and the on board (simulated) computer process it and command the drone in order to follow the target. In this simulation the camera is facing the ground (Figure: \ref{fig:ground_tracking_scene_vertical}).
 
-\begin{figure}[h]
+\begin{figure}[ht]
 	\centering
 	\includegraphics[width=0.7\linewidth]{../Images/c3/ground_tracking_scene_vertical}
 	\caption{Ground tracking - Oblique Camera}
@@ -44,7 +44,7 @@ This Scene has basically one quad rotor and one target (Figure: \ref{fig:VREP_sc
 
 	In this test the maximum error (That is about 4.6 cm) is at the beginning of the simulation Due to the initial state of the EKF. Lately the this error is reduced to $\sim$ 1 cm. The fist figure (\ref{fig:sim1_traj_ori} and \ref{fig:sim1_traj_track}) that contains 2 pictures, shows X and Y coordinate of the a) real trajectory and b) the results of EKF algorithm. The last figure of this simulation shows the 3D path that was described by the target (Blue line) and the tracked trajectory (Red line); Figure \ref{fig:sim1_traj_both_3d}.
 	
-\begin{figure}[h]
+\begin{figure}[ht]
 	\centering
 	\begin{subfigure}[b]{0.4\linewidth}
 		\centering
@@ -63,7 +63,7 @@ This Scene has basically one quad rotor and one target (Figure: \ref{fig:VREP_sc
 \end{figure}
 
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[width=0.7\linewidth]{../Images/c3/sim1_traj_both_3d}
 \caption{Ground tracking - Oblique Camera - 3D trajectory}
