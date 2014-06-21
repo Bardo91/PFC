@@ -18,9 +18,27 @@ Every quadrotors has a camera and an embedded computer that runs the algorithm. 
 \end{figure}
 
 \subsection{Quadrotors Software}
-% 666 TODO: terminar
+	Every Quadrotor will run an application that is composed by a number of threads that allows it to parallelize the algorithm. This threads are:
+	
+	\begin{itemize}
+		\item User interface thread.
+		\item Image acquisition thread.
+		\item Image segmentation thread.
+		\item Communication thread.
+	\end{itemize}
+	% 666 TODO: terminar
+	
 \subsection{Ground Station Software}
-% 666 TODO: terminar
+	On the ground station, as in quad's computer, there will be running an application with parallel threads that manage the information to run as fast as possible the tracking algorithm. This threads are:
+	
+	
+	\begin{itemize}
+		\item User interface thread.
+		\item Communication thread.
+		\item Tracking thread.
+	\end{itemize}
+	% 666 TODO: terminar
+	
 \subsection{Conclusion}
 The functionality of both quads and station can be easily modified by adding threads with access to the socket. For example, making the station to send the results of the EKF is as easier as send a message through the socket using the interface provided by BOViL \cite{BOViL}. 
 
