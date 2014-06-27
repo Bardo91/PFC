@@ -53,6 +53,7 @@ midFPS2(1:nS) = midFPS2;
 
 subplot(2,1,1);
 plot(1:nS, station_out_log(1:nS,7), 'r', 1:nS, midFPS1, 'k');
+title('Segmentation FPS')
 subplot(2,1,2);
 plot(1:nS, station_out_log(1:nS,8), 'b', 1:nS, midFPS2, 'k');
-
+title('Tracking FPS')
