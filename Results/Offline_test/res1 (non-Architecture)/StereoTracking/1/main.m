@@ -1,83 +1,59 @@
 clear all;close all; clc;
-station_in_log = load('in_log.txt','r');
-station_out_log = load('out_log.txt');
-quad_out_log = load('out_Log_vrep.txt');
+station_out_log = load('outputFile_StereoTracking.txt');
+real_log = load('ViconData2.txt');
 
-[nO, mO] = size(quad_out_log);
+[nO, mO] = size(real_log);
 [nS, mS] = size(station_out_log);
 
+nS = 200;
+nO=nS;
+
 figure(1);
-plot(       1:nO, quad_out_log(1:nO,1),'b',...
-            1:nO, quad_out_log(1:nO,2),'r');
+subplot(2,1,1);
+plot(       1:nO, real_log(1:nO,2),'r',...
+            1:nO, real_log(1:nO,3),'g',...
+            1:nO, real_log(1:nO,4),'b');
 title('Original trajectory');
-        
-figure(2);
-plot(       1:nS, station_out_log(1:nS,1),'b',...
-            1:nS, station_out_log(1:nS,2),'r');
+legend('x','y','z');
+subplot(2,1,2);
+plot(       1:nS, station_out_log(1:nS,2),'r',...
+            1:nS, station_out_log(1:nS,3),'g',...
+            1:nS, station_out_log(1:nS,4),'b');
 title('tracked trajectory');
+legend('x','y','z');
+
+figure(2);
+errorX = real_log(1:nO, 2) - station_out_log(1:nS, 2);
+errorY = real_log(1:nO, 3) - station_out_log(1:nS, 3);
+errorZ = real_log(1:nO, 4) - station_out_log(1:nS, 4);
+
+midErrorX(1:nS) = sum(real_log(1:nO, 2) - station_out_log(1:nS, 2))/nS;
+midErrorY(1:nS) = sum(real_log(1:nO, 3) - station_out_log(1:nS, 3))/nS;
+midErrorZ(1:nS) = sum(real_log(1:nO, 4) - station_out_log(1:nS, 4))/nS;
+
+plot(       1:nS, errorX,'r',...
+            1:nS, midErrorX,'r',...
+            1:nS, errorY,'g',...
+            1:nS, midErrorY,'g',...
+            1:nS, errorZ,'b',...
+            1:nS, midErrorZ,'b');
+title('Error');
+legend('errorX', 'midErrorX', 'errorY', 'midErrorY', 'errorZ', 'midErrorZ');
 
 figure(3);
-plot(station_in_log(:,3));
-title('Timespan');
-medTime = sum(station_in_log(:,3))/nS;
-fps = 1/medTime
+plot3(      real_log(1:nO,2), real_log(1:nO,3), real_log(1:nO,4), 'b',...
+            station_out_log(1:nS,2), station_out_log(1:nS,3), station_out_log(1:nS,4), 'r');
 
-%% "Brute triangulation Station info_log"
-u0 = 256/2;
-v0 = 256/2; 
-f = 300; % Aprox
-
-X_brute = [];
-z = 0.00;
-for i = 1:nS
-    C = station_in_log(i, 4:6)';
-     R =     rotx(station_in_log(i,7)*180/pi)*...
-             roty(station_in_log(i,8)*180/pi)*...
-             rotz(station_in_log(i,9)*180/pi);
-
-    Zk = [station_in_log(i,10)-u0, station_in_log(i,11)-v0];
-    
-    zc = (z - C(3))/(R(3,1)*Zk(1)/f + R(3,2)*Zk(2)/f + R(3,3));
-    
-    X = [C(1) ; C(2)] + R(1:2, 1:3)*[-Zk(1)/f ; Zk(2)/f;1]*zc;
-    X_brute = [X_brute ; X' , z];
-end
-
-%% "Brute triangulation Vrep info log"
+% figure(4);
+% midFPS1 = sum(station_out_log(1:nS,7))/nS;
+% midFPS2 = sum(station_out_log(1:nS,8))/nS;
 % 
-% u0 = 256/2;
-% v0 = 256/2; 
-% f = 300; % Aprox
+% midFPS1(1:nS) = midFPS1;
+% midFPS2(1:nS) = midFPS2;
 % 
-% X_brute2 = [];
-% z = 0.00;
-% for i = 1:nO
-%     C = quad_out_log(i, 4:6)';
-%     R =     rotx(quad_out_log(i,7)*180/pi)*...
-%             roty(quad_out_log(i,8)*180/pi)*...
-%             rotz(quad_out_log(i,9)*180/pi);
-% 
-%     Zk = [quad_out_log(i,10), quad_out_log(i,11)];
-%     
-%     xc = (z - C(3))/(R(3,1) + Zk(1)/f*R(3,2) + Zk(2)/f*R(3,3));
-%     
-%     X = [C(1) ; C(2)] + R(1:2, 1:3)*[1 ; Zk(1)/f ; Zk(2)/f]*xc;
-%     X_brute2 = [X_brute2 ; X' , z];
-% end
-% 
-
-
-
-%% 3D plots
-Z1(1:nO) = 0;
-Z2(1:nS) = 0;
-
-testN  = nS;
-figure(4);
-plot3(      quad_out_log(1:nO,1), quad_out_log(1:nO,2), Z1, 'b',...
-            station_out_log(1:testN,1), station_out_log(1:testN,2), Z2(1:testN), 'r',...
-            X_brute(1:nS, 1), X_brute(1:nS, 2), X_brute(1:nS, 3), 'g');
-% plot3(      quad_out_log(1:nO,1), quad_out_log(1:nO,2), Z1, 'b',...
-%             X_brute(1:nS, 1), X_brute(1:nS, 2), X_brute(1:nS, 3), 'g');
-        
-        
+% subplot(2,1,1);
+% plot(1:nS, station_out_log(1:nS,7), 'r', 1:nS, midFPS1, 'k');
+% title('Segmentation FPS')
+% subplot(2,1,2);
+% plot(1:nS, station_out_log(1:nS,8), 'b', 1:nS, midFPS2, 'k');
+% title('Tracking FPS')
