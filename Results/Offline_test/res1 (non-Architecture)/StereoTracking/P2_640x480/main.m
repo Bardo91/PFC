@@ -5,7 +5,7 @@ real_log = load('ViconData2.txt');
 [nO, mO] = size(real_log);
 [nS, mS] = size(station_out_log);
 
-nS = 200;
+% nS = 200;
 nO=nS;
 
 figure(1);
