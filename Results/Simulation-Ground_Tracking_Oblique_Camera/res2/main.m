@@ -12,8 +12,8 @@ plot(       1:nO, quad_out_log(1:nO,1),'b',...
 title('Original trajectory');
         
 figure(2);
-plot(       1:nS, station_out_log(1:nS,1),'b',...
-            1:nS, station_out_log(1:nS,2),'r');
+plot(       1:nS, station_out_log(1:nS,10),'b',...
+            1:nS, station_out_log(1:nS,11),'r');
 title('tracked trajectory');
 
 figure(3);
@@ -75,7 +75,7 @@ Z2(1:nS) = 0;
 testN  = nS;
 figure(4);
 plot3(      quad_out_log(1:nO,1), quad_out_log(1:nO,2), Z1, 'b',...
-            station_out_log(1:testN,1), station_out_log(1:testN,2), Z2(1:testN), 'r');
+            station_out_log(1:testN,10), station_out_log(1:testN,11), Z2(1:testN), 'r');
          
 % plot3(      quad_out_log(1:nO,1), quad_out_log(1:nO,2), Z1, 'b',...
 %             station_out_log(1:testN,1), station_out_log(1:testN,2), Z2(1:testN), 'r',...

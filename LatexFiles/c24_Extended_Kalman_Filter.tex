@@ -3,8 +3,13 @@
 
 The system consist on a quadrotor with a camera attached and a target that could be on the ground if there is only one vigilant, or "flying" if there's at least two cameras. The coordinates of the point can be described through the camera position thanks to the following equation (Figure: \ref{fig:Pinhole_Model}).
 
+\begin{equation}
+\left. \overrightarrow{P_{obj}} = \overrightarrow{C} + \bar{\bar{R}}^{T}*\overrightarrow{P_{c}} \right|_c
+\end{equation}
+
 \begin{equation} \label{eq:system_equation}
 P_{obj} = 
+	\left.
 	\begin{pmatrix}
 	x \\
 	y \\
@@ -18,9 +23,9 @@ P_{obj} =
 	\end{pmatrix}
 +
 	\begin{pmatrix}
-	r_{11} & r_{12} & r_{13} \\
-	r_{21} & r_{22} & r_{23} \\
-	r_{31} & r_{32} & r_{33} \\
+	r_{11} & r_{21} & r_{31} \\
+	r_{12} & r_{22} & r_{32} \\
+	r_{13} & r_{23} & r_{33} \\
 	\end{pmatrix}
 *
 	\begin{pmatrix}
@@ -28,12 +33,13 @@ P_{obj} =
 	y_c \\
 	z_c \\
 	\end{pmatrix}
+	\right|_c
 \end{equation}
 
 
 %----------------------------------------------------------
 \subsection{Camera Model}
-	The model of the camera \cite{camera_models} and its equations had been described on section 2.4. Matching Algorithm.
+	The model of the camera \cite{camera_models} and its equations had been described in section \ref{fig:Pinhole_Model}. Matching Algorithm.
 	
 %----------------------------------------------------------
 \subsection{Extended Kalman Filter}
@@ -131,9 +137,9 @@ Getting \ref{eq:system_equation} and isolating the position vector of the target
 	\end{pmatrix}
 =
 	\begin{pmatrix}
-		r_{11} & r_{21} & r_{31} \\
-		r_{12} & r_{22} & r_{32} \\
-		r_{13} & r_{23} & r_{33}
+		r_{11} & r_{12} & r_{13} \\
+		r_{21} & r_{22} & r_{23} \\
+		r_{31} & r_{32} & r_{33}
 	\end{pmatrix}
 *
 	\begin{pmatrix}
@@ -148,9 +154,9 @@ So, individually:
 \begin{equation}
 \left\{ 
 	\begin{aligned}
-		x_c = r_{11}(x-c_x) + r_{21}(y-c_y) + r_{31}(z-c_z) \\
-		y_c = r_{12}(x-c_x) + r_{22}(y-c_y) + r_{32}(z-c_z) \\
-		z_c = r_{13}(x-c_x) + r_{23}(y-c_y) + r_{33}(z-c_z) 
+		x_c = r_{11}(x-c_x) + r_{12}(y-c_y) + r_{13}(z-c_z) \\
+		y_c = r_{21}(x-c_x) + r_{22}(y-c_y) + r_{23}(z-c_z) \\
+		z_c = r_{31}(x-c_x) + r_{32}(y-c_y) + r_{33}(z-c_z) 
 	\end{aligned} \right.
 \end{equation}
 
@@ -159,8 +165,8 @@ Introducing this in equation \ref{eq:observation_equation}.
 \begin{equation}
 z_k =
 	\begin{pmatrix}
-		-f·\frac{r_{11}(x-c_x) + r_{21}(y-c_y) + r_{31}(z-c_z)}{r_{13}(x-c_x) + r_{23}(y-c_y) + r_{33}(z-c_z)} \\
-		f·\frac{r_{12}(x-c_x) + r_{22}(y-c_y) + r_{32}(z-c_z)}{r_{13}(x-c_x) + r_{23}(y-c_y) + r_{33}(z-c_z)}
+		-f·\frac{r_{11}(x-c_x) + r_{12}(y-c_y) + r_{13}(z-c_z)}{r_{31}(x-c_x) + r_{32}(y-c_y) + r_{33}(z-c_z)} \\
+		f·\frac{r_{21}(x-c_x) + r_{22}(y-c_y) + r_{23}(z-c_z)}{r_{31}(x-c_x) + r_{32}(y-c_y) + r_{33}(z-c_z)}
 	\end{pmatrix}
 \end{equation}
 
@@ -183,8 +189,8 @@ J_f =
 \begin{equation}
 J_h = 
 	\begin{pmatrix}
-		-\frac{r_{11}z_c - r_{13}x_c}{x_c^2} & -\frac{r_{21}z_c - r_{23}x_c}{z_c^2}  & 0 & 0  \\
-		\frac{r_{12}z_c - r_{13}y_c}{x_c^2} & \frac{r_{22}z_c - r_{23}y_c}{z_c^2}  & 0 & 0 
+		-\frac{r_{11}z_c - r_{31}x_c}{x_c^2} & -\frac{r_{12}z_c - r_{32}x_c}{z_c^2}  & 0 & 0  \\
+		\frac{r_{21}z_c - r_{31}y_c}{x_c^2} & \frac{r_{22}z_c - r_{32}y_c}{z_c^2}  & 0 & 0 
 	\end{pmatrix}
 \end{equation}
 
@@ -209,11 +215,11 @@ J_f =
 \begin{equation}
 J_h = 
 	\begin{pmatrix}
-		-\frac{r_{11}^{c1}z^{c1}_c - r_{13}^{c1}x^{c1}_c}{{(z^{c1}_c)}^2} & -\frac{r_{21}^{c1}z^{c1}_c - r_{23}^{c1}x^{c1}_c}{{(z^{c1}_c)}^2} & -\frac{r_{31}^{c1}z^{c1}_c - r_{33}^{c1}x^{c1}_c}{{(z^{c1}_c)}^2} & 0 & 0 & 0 \\
-		\frac{r_{12}^{c1}z_c^{c1} - r_{13}^{c1}y_c^{c1}}{{(z^{c1}_c)}^2} & \frac{r_{22}^{c1}z_c^{c1} - r_{23}^{c1}y_c^{c1}}{{(z^{c1}_c)}^2} & \frac{r_{32}^{c1}z_c^{c1} - r_{33}^{c1}y_c^{c1}}{{(z^{c1}_c)}^2} & 0 & 0 & 0 \\
+		-\frac{r_{11}^{c1}z^{c1}_c - r_{31}^{c1}x^{c1}_c}{{(z^{c1}_c)}^2} & -\frac{r_{12}^{c1}z^{c1}_c - r_{32}^{c1}x^{c1}_c}{{(z^{c1}_c)}^2} & -\frac{r_{13}^{c1}z^{c1}_c - r_{33}^{c1}x^{c1}_c}{{(z^{c1}_c)}^2} & 0 & 0 & 0 \\
+		\frac{r_{21}^{c1}z_c^{c1} - r_{31}^{c1}y_c^{c1}}{{(z^{c1}_c)}^2} & \frac{r_{22}^{c1}z_c^{c1} - r_{32}^{c1}y_c^{c1}}{{(z^{c1}_c)}^2} & \frac{r_{23}^{c1}z_c^{c1} - r_{33}^{c1}y_c^{c1}}{{(z^{c1}_c)}^2} & 0 & 0 & 0 \\
 		
-		-\frac{r_{11}^{c2}z^{c2}_c - r_{13}^{c2}x^{c2}_c}{{(z^{c2}_c)}^2} & -\frac{r_{21}^{c2}z^{c2}_c - r_{23}^{c2}x^{c2}_c}{{(z^{c2}_c)}^2} & -\frac{r_{31}^{c2}z^{c2}_c - r_{33}^{c2}x^{c2}_c}{{(z^{c2}_c)}^2} & 0 & 0 & 0 \\
-		\frac{r_{12}^{c2}z_c^{c2} - r_{13}^{c2}y_c^{c2}}{{(z^{c2}_c)}^2} & \frac{r_{22}^{c2}z_c^{c2} - r_{23}^{c2}y_c^{c2}}{{(z^{c2}_c)}^2} & \frac{r_{32}^{c2}z_c^{c2} - r_{33}^{c2}y_c^{c2}}{{(z^{c2}_c)}^2} & 0 & 0 & 0 \\
+		-\frac{r_{11}^{c2}z^{c2}_c - r_{31}^{c2}x^{c2}_c}{{(z^{c2}_c)}^2} & -\frac{r_{12}^{c2}z^{c2}_c - r_{32}^{c2}x^{c2}_c}{{(z^{c2}_c)}^2} & -\frac{r_{13}^{c2}z^{c2}_c - r_{33}^{c2}x^{c2}_c}{{(z^{c2}_c)}^2} & 0 & 0 & 0 \\
+		\frac{r_{21}^{c2}z_c^{c2} - r_{31}^{c2}y_c^{c2}}{{(z^{c2}_c)}^2} & \frac{r_{22}^{c2}z_c^{c2} - r_{32}^{c2}y_c^{c2}}{{(z^{c2}_c)}^2} & \frac{r_{23}^{c2}z_c^{c2} - r_{33}^{c2}y_c^{c2}}{{(z^{c2}_c)}^2} & 0 & 0 & 0 \\
 				
 	\end{pmatrix}
 \end{equation}
