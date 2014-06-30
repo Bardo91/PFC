@@ -1,14 +1,17 @@
 \subsection{Introduction}
 	This section is divided in two parts, the first one describe the implementation of the algorithm in a laptop computer. The objective is to get a reference to compare the results of the final implementation. The second one is a description of the final application and its results.
+	During this experiments, five datasets were used. These datasets were provided by the GRVC, captured in the testbed of CATEC \cite{CATEC}, and were used previously by a partner. These datasets, composed by a number of images and data provided by a VICON system (Time, position and orientation of quadrotors), and Representing different situations, yielded a number of interesting results that will be gathered at the end of this chapter. 
 
 \subsection{Complete Test in PC}
 	In this situation, the algorithm runs in a Desktop computer using a USB camera. Summarizing:
 	
 	\begin{itemize}
-		\item{Camera: 30 Hz and pictures of 640x480}
+		\item{Camera: 30 Hz and pictures of 640x480 (Logitech c525)}
 		\item{Intel core i7 2.20 GHz. Usage 7\%}
 		\item{6 GB of RAM. Usage $\sim$ 5000 KB}
 	\end{itemize}
+	
+	Figure: \ref{fig:frames_PC} shows the captured image from the camera and the result of the segmentation algorithm. Particularly, we were looking for orange color (The cap of the quadrotor in this case). However unlike simulation, where there was only one object as the result of segmentation, the algorithm return many targets. The first sift is by size, we do not consider tiny objects that use to be noise and are quantitative smaller than the target.
 	
 	\begin{figure}[h]
 		\centering
@@ -23,15 +26,32 @@
 			\caption{Segmented Image}
 			\label{fig:image_seg}
 		\end{subfigure}
+		\caption{Images to and from algorithm}
+		\label{fig:frames_PC}
 	\end{figure}
+	
+	
+	\subsubsection{Ground Tracking algorithm}
+	Here segmentation runs at $\sim$ 58 FPS  \ref{fig:fps_PC}. etc... etc....
+	
 	
 	\begin{figure}[ht]
 		\centering
-		\includegraphics[width=\linewidth]{../Images/c4/trajs}
-		\caption{}
-		\label{fig:trajectories_PC}
+		\begin{subfigure}[ht]{0.45\linewidth}
+			\centering
+				\includegraphics[width=\linewidth]{../Images/c4/trajs}
+				\caption{Original and tracked trajectories}
+				\label{fig:trajectories_PC}
+		\end{subfigure}
+		~
+		\begin{subfigure}[ht]{0.45\linewidth}
+			\centering
+			\includegraphics[width=\linewidth]{../Images/c4/errors}
+			\caption{Error between real and tracked trajectories}
+			\label{fig:errors_PC}
+		\end{subfigure}
 	\end{figure}
-	
+			
 	\begin{figure}[ht]
 		\centering
 		\includegraphics[width=\linewidth]{../Images/c4/fps}
@@ -39,8 +59,12 @@
 		\label{fig:fps_PC}
 	\end{figure}
 		
-
+	\subsubsection{Stereo Tracking algorithm}
 	
 
 	
 \subsection{Test with Odroid and Ground Station}
+
+	\subsubsection{Ground Tracking algorithm}
+	
+	\subsubsection{Stereo Tracking algorithm}
