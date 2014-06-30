@@ -5,7 +5,7 @@ RGB is the most common color space, it's composed by three channels (One per col
 Instead of using RGB, in this project, HSV color space are chosen. HSV (Hue, Saturation and Value) has all the color information arrange in only one variable: H or Hue channel. That issue, simplifies the algorithm by making the color separation surfaces flats.  \\
 
 % HSV vs RGB figure
-\begin{figure}
+\begin{figure}[h]
 	\centering
 	\includegraphics[width=0.75\textwidth,natwidth=944,natheight=400]{../Images/c2/HSV_vs_RGB.png}
 	\caption{HSV and RGB spaces of color}
@@ -16,12 +16,12 @@ Instead of using RGB, in this project, HSV color space are chosen. HSV (Hue, Sat
 \subsection{Pixel Transformation}
 Pixel Transformation method refers to the process which takes every single pixel of the image and transform it to a simplified color. That's made by applying a threshold the value of H, S and V channels. \\
 
-\begin{wrapfigure}{r}{0.35\textwidth}
-	%\vspace{-2.5cm}
-	\includegraphics[width=0.4\textwidth,natwidth=659,natheight=659]{../Images/c2/DividingSubSpace.png}
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.5\textwidth,natwidth=659,natheight=659]{../Images/c2/DividingSubSpace.png}
 	\caption{Division of subspace}
 	\label{fig:DividingSubSpace}
-\end{wrapfigure}
+\end{figure}
 
 The common way to apply that threshold if by calling $if...else...$ sentences. But that way is not very efficient because it has got 6 comparison at runtime. Instead, the implementation used on this document, based on CMU algorithm \cite{JamesBruce_CMU_SEG}, consist on boolean thresholds defined at compile-time. This fact reduce considerably the runtime execution. 
 
@@ -70,7 +70,47 @@ Where the high-order bit in each element  of the array represent the $blue$ colo
 
 which result is black again.
 
-In our implementation we use arrays of bytes of size 36. That allows us to segment every image in 8 different colors with a precision in every channel of $1/36$. In conclusion, this method has a high-speed performance but is not adaptable at runtime.
+In our implementation we use arrays of bytes of size 36. That allows us to segment every image in 8 different colors with a precision in every channel of $1/36$ defined by the user in code. In conclusion, this method has a high-speed performance but is not adaptable at runtime.
+
+Here is the result of applying the algorithm to the well-know picture \textit{Head Scene} of the university of Tsukuba \ref{fig:head_scene_tsukuba_ori} \ref{fig:head_scene_tsukuba_seg}.
+
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.5\linewidth]{../Images/c2/head_scene_tsukuba_ori}
+	\caption{Original image of the Head Scene}
+	\label{fig:head_scene_tsukuba_ori}
+\end{figure}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.5\linewidth]{../Images/c2/head_scene_tsukuba_seg}
+	\caption{Segmented image of the Head Scene}
+	\label{fig:head_scene_tsukuba_seg}
+\end{figure}
+
+
+
+%\begin{figure}[h]
+%	\centering
+%	\begin{subfigure}{0.47\linewidth}
+%		\centering
+%		\includegraphics[width=\linewidth]{../Images/c2/head_scene_tsukuba_ori}
+%		\caption{Original image of the Head Scene}
+%		\label{fig:head_scene_tsukuba_ori}
+%	\end{subfigure}
+%	~
+%	\begin{subfigure}{0.47\linewidth}
+%		\centering
+%		\includegraphics[width=\linewidth]{../Images/c2/head_scene_tsukuba_seg}
+%		\caption{Segmented image of the Head Scene}
+%		\label{fig:head_scene_tsukuba_seg}
+%	\end{subfigure}
+%	\caption{Head Scene, University of Tsukuba}
+%	\label{fig:Head_Scene}
+%\end{figure}
+
+
 
 %----------------------------------------------------------
 \subsection{Run-length encoding}
