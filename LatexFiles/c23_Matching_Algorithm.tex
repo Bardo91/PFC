@@ -1,6 +1,6 @@
 The matching consist on link objects between both images. It's an essential step in the algorithm because without step is not possible to track rightly 3D targets.\\
 
-\begin{figure} [hb]
+\begin{figure} [htp]
 	\centering
 \includegraphics[width=0.75\textwidth,natwidth=544,natheight=388]{../Images/c2/pinhole_model.png} 
 	\caption{Pinhole Camera Model}
@@ -18,7 +18,7 @@ Y^{img} = f*\frac{Y}{Z}
 
 Where f is the focal length of the camera; $X^{img}$ and $Y^{img}$ are the projection of the three dimensional point on the camera plane. This equations are in $\mathbb{R}^3$ the equations of 2 planes that cut in one line (The epipolar line). So in conclusion, every segmented object in the camera's images provide a pair of planes (or a single line). Ideally, if the Segmentation had no errors every pair os lines (One per camera for the same target) will cross in a point. However due to errors is almost improbable. That's why the matching algorithm links the objects by minimizing the distance between lines.
 
-\begin{figure}[h]
+\begin{figure}[hp]
 \centering
 \includegraphics[width=0.75\textwidth,natwidth=468,natheight=267]{../Images/c2/Epipolar_Lines.png}
 \caption{Epipolar Lines}
@@ -58,7 +58,7 @@ t = \frac{u_1 *_u1 * s - [P_2 - P_1] * u_1}{u_2 * u_1}
 
 Eventually, $dist(r_1,r_2) = norm(\overline{P_1P_2(s,t)})$.
 
-\begin{figure}[h]
+\begin{figure}[htp]
 \centering
 \includegraphics[width=0.7\linewidth]{../Images/c2/line_cut}
 \caption{Line minimal distance}

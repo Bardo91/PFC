@@ -1,5 +1,5 @@
 %----------------------------------------------------------
-\documentclass{book} %
+\documentclass[11pt, oneside]{book} %
 
 \usepackage{amsmath} %
 \usepackage{amsfonts} %
@@ -33,7 +33,7 @@
 \newtheorem{proposition}[theorem]{Proposition}
 \newtheorem{remark}[theorem]{Remark}
 \newtheorem{solution}[theorem]{Solution}
-\newtheorem{summary}[theorem]{Summary}
+\newtheorem{summary}[theorem]{Summary} 
 \newenvironment{proof}[1][Proof]{\textbf{#1.} }{\ \rule{0.5em}{0.5em}}
 %----------------------------------------------------------
 
@@ -61,12 +61,11 @@
 %----------------------------------------------------------
 % Chapter 1. Introduction
 \chapter{Introduction}
-\section{State of Art}
-\input{c11_State_of_Art}
-
 \section{Objectives}
 \input{c12_Objectives}
 
+\section{State of Art}
+\input{c11_State_of_Art}
 %% Started the main Content
 \mainmatter
 
@@ -87,6 +86,7 @@
 \section{Extended Kalman Filter}
 \input{c24_Extended_Kalman_Filter}
 
+\newpage
 \section{Communication}
 \input{c25_Communication}
 
@@ -128,26 +128,46 @@
 \begin{thebibliography}{9}
 % \bibitem{} \textit{} 
 
-\bibitem{traffic_surveillance_pergamon} \textit{A real-time computer vision system for vehicle tracking
-and trac surveillance} Benjamin Coifmana, David Beymerb, Philip McLauchlanb and Jitendra Malikb
+\bibitem{Image_processing_UAV} Ryan Carnie, Rodney Walker and Peter Corke \textit{Image Processing Algorithms for UAV “Sense and Avoid”} 
 
-\bibitem{distributed_surveillance} \textit{Intelligent distributed surveillance systems} M. Valera and S.A. Velastin
+\bibitem{traffic_surveillance_pergamon} Benjamin Coifmana, David Beymerb, Philip McLauchlanb and Jitendra Malikb\textit{A real-time computer vision system for vehicle tracking and trac surveillance} 
 
-\bibitem{vehicle_detection} \textit{Computer Vision Model for Vehicle Detection in Traffic Surveillance} D.Neelima and Gowtham Mamidisetti
+\bibitem{distributed_surveillance} M. Valera and S.A. Velastin \textit{Intelligent distributed surveillance systems} 
 
-\bibitem{Kinect_intro} \textit{Enhanced Computer Vision with Microsoft Kinect Sensor: A Review.} Jungong Han, Ling Shao, Dong Xu and Jamie Shotton
+\bibitem{vehicle_detection} D.Neelima and Gowtham Mamidisetti \textit{Computer Vision Model for Vehicle Detection in Traffic Surveillance} 
 
-\bibitem{JamesBruce_CMU_SEG} \textit{Fast and Inexpensive Color Image Segmentation for Interactive Robots.} James Bruce, Tucker Balch, Manuela Veloso. IROS2000. School of Computer Science Carnegie Mellon University
+\bibitem{Kinect_intro} Jungong Han, Ling Shao, Dong Xu and Jamie Shotton \textit{Enhanced Computer Vision with Microsoft Kinect Sensor: A Review.} 
 
-\bibitem{GabrielTerejanu_EKF} \textit{Extended Kalman Filter Tutorial} Gabriel A. Terejanu. IROS2000. Department of Computer Science and Engineering, University at Buffalo
+\bibitem{Coop_Surv_aerial_JJ} Jose Joaquin Acevedo, Bego\~na Arrue, Ivan Maza and Anibal Ollero \textit{Cooperative large area surveillance with a team of aerial mobile robots for long endurance missions}
 
-\bibitem{fast_segmentation_Mitra} \textit{An Algorithm for Fast Segmentation of Color Images} L. Lucchese and S.K. Mitra
 
-\bibitem{fuzzy_segmentation} \textit{A fast fuzzy c-means algorithm for color image segmentation} Hoel Le Capitaine and Carl Frélicot
+\bibitem{Consensus_reaching_Xiao} Xiaojun Geng. \textit{ Consensus-reaching of multiple robots with fewer interactions }. In $Computer Science and Information Engineering$, 2009 WRI World Congress on, volume 5, pages 249 - 253, 31 2009-april 2 2009.
 
-\bibitem{camera_models} \textit{Camera Models and Imaging} Leow Wee Kheng
+\bibitem{Adaptative_tast_Meuth} R.J. Meuth, E.W. Saad, D.C. Wunsch, and J. Vian. \textit{Adaptive task allocation for search area coverage} . In $Technologies for Practical Robot Applications$, 2009.TePRA 2009. IEEE International Conference on, pages 67-74, nov. 2009.
 
-\bibitem{Image_processing_UAV} \textit{Image Processing Algorithms for UAV “Sense and Avoid”}  Ryan Carnie, Rodney Walker and Peter Corke
+\bibitem{distributed_architecture_Ivan_Maza} Ivan Maza, Fernando Caballero, Jesus Capitan, J.R. Martinez de Dios and Anibal Ollero \textit{A Distributed Architecture for a Robotic Platform with Aerial Sensor Transportation and Self-Deployment Capabilities} Robotics, Vision and Control Group. Universidad de Sevilla.
+
+\bibitem{descentralized_task_UAV} Edison Pignaton de Freitas, Tales Heimfarth, Armando Morado Ferreira, Carlos Eduardo Pereira, Flavio Rech Wagner and Tony Larsson \textit{Decentralized Task Distribution among Cooperative UAVs in Surveillance Systems Applications}
+
+\bibitem{shape_using_shape_context} Serger Belongie, Jitendra Malik, Jan Puzicha \textit{Shape Matching and Object Recognition Using Shape Context} IEEE Transaction on pattern analysis and machine intelligence. April 2002
+ 
+\bibitem{Vehicle_recog_markov} Tian-min Deng, Yi-ming Shao, Min Li, and Li Lin \textit{Vehicle Recognition Based on Gabor Wavelets Transform and Hidden Markov Model} American Society of Civil Engineers. 2007
+ 
+\bibitem{realtime_signal_recon_shape_color} Alberto Broggi, Pietro Cerri, Paolo Medici, Pier Paolo Porta and Guido Ghisio  \textit{Real Time Road Signs Recognition} IEEE Intelligent Vehicles Symposium Istanbul, Turkey, June 13-15, 2007
+
+\bibitem{signal_recogn_shape_color} Claw Bahlmann, Ying Zhu, Visvanathan Ramesh, Martin Pellkofert and Thorstea Koehled  \textit{A System for Traffic Sign Detection, Tracking, and 	Recognition Using Color, Shape, and Motion Information}
+
+\bibitem{Robust_RT_tracking_color_face_Darrell} Darrell, T., Gordon, G., Woodﬁll, J., Baker, H., and Harville, M. \textit{Robust real-time people tracking in open environments using integrated stereo, color, and face detection}. 3rd IEEE workshop on visual surveillance, India, 1998, pp. 26–33.
+
+\bibitem{JamesBruce_CMU_SEG} James Bruce, Tucker Balch, Manuela Veloso  \textit{Fast and Inexpensive Color Image Segmentation for Interactive Robots.} . IROS2000. School of Computer Science Carnegie Mellon University
+
+\bibitem{GabrielTerejanu_EKF} Gabriel A. Terejanu \textit{Extended Kalman Filter Tutorial} . IROS2000. Department of Computer Science and Engineering, University at Buffalo
+
+\bibitem{fast_segmentation_Mitra} L. Lucchese and S.K. Mitra \textit{An Algorithm for Fast Segmentation of Color Images}
+
+\bibitem{fuzzy_segmentation} Hoel Le Capitaine and Carl Frélicot \textit{A fast fuzzy c-means algorithm for color image segmentation}
+
+\bibitem{camera_models}  Leow Wee Kheng \textit{Camera Models and Imaging}
 
 \bibitem{SocketWiki} \textit{Network Socket} \url{http://en.wikipedia.org/wiki/Network_socket}
 
@@ -155,9 +175,10 @@ and trac surveillance} Benjamin Coifmana, David Beymerb, Philip McLauchlanb an
 
 \bibitem{TCPIP} \textit{TCP/IP Protocol}  \url{http://en.wikipedia.org/wiki/TCP/IP_model}
 
-\bibitem{Cloud_computing} \textit{White Paper Cloud Computing. T - Systems} T-Systems Enterprise Services GmbH 2008
+\bibitem{Cloud_computing} T-Systems Enterprise Services GmbH 2008\textit{White Paper Cloud Computing. T - Systems} 
 
 \bibitem{CATEC} \textit {CATEC's Tesbed} \url{http://www.catec.aero/}
+
 \end{thebibliography}
 
 %----------------------------------------------------------

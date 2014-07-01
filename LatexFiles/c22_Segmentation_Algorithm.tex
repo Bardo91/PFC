@@ -75,16 +75,16 @@ In our implementation we use arrays of bytes of size 36. That allows us to segme
 Here is the result of applying the algorithm to the well-know picture \textit{Head Scene} of the university of Tsukuba \ref{fig:head_scene_tsukuba_ori} \ref{fig:head_scene_tsukuba_seg}.
 
 
-\begin{figure}[h]
+\begin{figure}[hbp]
 	\centering
-	\includegraphics[width=0.5\linewidth]{../Images/c2/head_scene_tsukuba_ori}
+	\includegraphics[width=0.4\linewidth]{../Images/c2/head_scene_tsukuba_ori}
 	\caption{Original image of the Head Scene}
 	\label{fig:head_scene_tsukuba_ori}
 \end{figure}
 
-\begin{figure}[h]
+\begin{figure}[htp]
 	\centering
-	\includegraphics[width=0.5\linewidth]{../Images/c2/head_scene_tsukuba_seg}
+	\includegraphics[width=0.4\linewidth]{../Images/c2/head_scene_tsukuba_seg}
 	\caption{Segmented image of the Head Scene}
 	\label{fig:head_scene_tsukuba_seg}
 \end{figure}
@@ -166,4 +166,5 @@ Once every row of the picture is encoded with RLE it's necessary to connect the 
    			\label{fig:RLE4}
    		\end{subfigure}
 	\end{subfigure}
+	\caption{Object creation  from RLEs}
 \end{figure}

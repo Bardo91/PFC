@@ -7,3 +7,14 @@
 /LatexFiles/*.toc
 /*.lnk
 /*.tps
+/LatexFiles/*.idx
+/LatexFiles/*.maf
+/LatexFiles/*.mtc
+/LatexFiles/*.mtc0
+/LatexFiles/*.mtc1
+/LatexFiles/*.mtc2
+/LatexFiles/*.mtc3
+/LatexFiles/*.mtc4
+/LatexFiles/*.mtc5
+/LatexFiles/*.mtc6
+/LatexFiles/*.mtc7

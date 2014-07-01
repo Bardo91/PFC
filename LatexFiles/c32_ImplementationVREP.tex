@@ -6,14 +6,14 @@ Every section of this chapter is a simulation of the future application. Every s
 
 \begin{figure}[ht]
 	\centering
-	\includegraphics[width=0.7\textwidth,natwidth=1366,natheight=728]{../Images/c3/ground_tracking_scene.png}
+	\includegraphics[width=0.8\textwidth,natwidth=1366,natheight=728]{../Images/c3/ground_tracking_scene.png}
 	\caption{Ground Tracking Scene}
 	\label{fig:VREP_scene_example}
 \end{figure}
 
 \begin{figure}[ht]
 	\centering
-	\includegraphics[width=0.7\textwidth,natwidth=677,natheight=342]{../Images/c3/ground_tracking_vrep_console.png}
+	\includegraphics[width=0.8\textwidth,natwidth=677,natheight=342]{../Images/c3/ground_tracking_vrep_console.png}
 	\caption{Ground Tracking V-REP Console}
 	\label{fig:Ground_Tracking_VREP_Console}
 \end{figure}
@@ -22,7 +22,7 @@ There is another component in the simulations, the ground station, with the aim 
 
 \begin{figure}[ht]
 	\centering
-	\includegraphics[width=0.7\textwidth,natwidth=677,natheight=342]{../Images/c3/ground_tracking_server_console.png}
+	\includegraphics[width=0.8\textwidth,natwidth=677,natheight=342]{../Images/c3/ground_tracking_server_console.png}
 	\caption{Ground Tracking Server Console}
 	\label{fig:Ground_Tracking_Server_Console}
 \end{figure}
@@ -38,25 +38,25 @@ This Scene has basically one quad rotor and one target (Figure: \ref{fig:VREP_sc
 
 \begin{figure}[ht]
 	\centering
-	\includegraphics[width=0.7\linewidth]{../Images/c3/ground_tracking_scene_vertical}
+	\includegraphics[width=0.65\linewidth]{../Images/c3/ground_tracking_scene_vertical}
 	\caption{Ground tracking - Oblique Camera}
 	\label{fig:ground_tracking_scene_vertical}
 \end{figure}
 
 \subsubsection{Test and results}
 
-	In this test the maximum error (That is about 4.6 cm) is at the beginning of the simulation Due to the initial state of the EKF. Lately the this error is reduced to $\sim$ 1 cm. The fist figure (\ref{fig:sim1_traj_ori} and \ref{fig:sim1_traj_track}) that contains 2 pictures, shows X and Y coordinate of the a) real trajectory and b) the results of EKF algorithm. The last figure of this simulation shows the 3D path that was described by the target (Blue line) and the tracked trajectory (Red line); Figure \ref{fig:sim1_traj_both_3d}.
+	In this test the maximum error (That is about 1 cm) is at the beginning of the simulation Due to the initial state of the EKF. Lately the this error is reduced to $\sim$ 0. The fist figure (\ref{fig:sim1_traj_ori} and \ref{fig:sim1_traj_track}) that contains 2 pictures, shows X and Y coordinate of the a) real trajectory and b) the results of EKF algorithm. The last figure of this simulation shows the 3D path that was described by the target (Blue line) and the tracked trajectory (Red line); Figure \ref{fig:sim1_traj_both_3d}.
 	
-\begin{figure}[ht]
+\begin{figure}[htp]
 	\centering
-	\begin{subfigure}[b]{0.4\linewidth}
+	\begin{subfigure}{0.45\linewidth}
 		\centering
 		\includegraphics[width=\linewidth]{../Images/c3/sim1_traj_ori}
 		\caption{Ground tracking - Original trajectory}
 		\label{fig:sim1_traj_ori}
 	\end{subfigure}
 	~
-	\begin{subfigure}[b]{0.4\linewidth}
+	\begin{subfigure}{0.45\linewidth}
 		\centering
 		\includegraphics[width=\linewidth]{../Images/c3/sim1_traj_track}
 		\caption{Ground tracking - Tracked trajectory}
@@ -83,27 +83,27 @@ This Scene has basically one quad rotor and one target (Figure: \ref{fig:VREP_sc
 \subsubsection{Set up}
 This Scene has basically one quad rotor and one target. The Red sphere is moving on the floor (Describing a curve) while the quad's camera captures pictures and the on board (simulated) computer process it and command the drone in order to follow the target. In this case, the camera is not facing directly the ground, now it's oblique (45 degrees from the previous; Figure: \ref{fig:ground_tracking_scene_oblique}). At this experiment, the speed of the target was increased.
 
-\begin{figure}[h]
+\begin{figure}[hp]
 	\centering
-	\includegraphics[width=0.7\linewidth]{../Images/c3/ground_tracking_scene_oblique}
+	\includegraphics[width=0.65\linewidth]{../Images/c3/ground_tracking_scene_oblique}
 	\caption{Ground tracking - Oblique Camera}
 	\label{fig:ground_tracking_scene_oblique}
 \end{figure}
 
 \subsubsection{Test and results}
 \label{lab:sim2_test_results}
-In this test the maximum error, apart from the beginning that is large initially due to the initial state of EKF until it's established, is $\sim$ 8 cm due to the speediness of the target at the curve. Lately the this error is reduced to $\sim$ 1-2 cm. The fist figure (\ref{fig:sim2_traj_ori} and \ref{fig:sim2_traj_track}) that contains 2 pictures, shows X and Y coordinate of the a) real trajectory and b) the results of EKF algorithm. The last figure of this simulation shows the 3D path that was described by the target (Blue line) and the tracked trajectory (Red line); Figure \ref{fig:sim2_traj_both_3d}.
+In this test the maximum error, apart from the beginning that is large initially due to the initial state of EKF until it's established, is $\sim$ 2 cm due to the speediness of the target at the curve. Lately the this error is reduced to $\sim$ 0. The fist figure (\ref{fig:sim2_traj_ori} and \ref{fig:sim2_traj_track}) that contains 2 pictures, shows X and Y coordinate of the a) real trajectory and b) the results of EKF algorithm. The last figure of this simulation shows the 3D path that was described by the target (Blue line) and the tracked trajectory (Red line); Figure \ref{fig:sim2_traj_both_3d}.
 
-\begin{figure}[h]
+\begin{figure}[htp]
 	\centering
-	\begin{subfigure}[b]{0.4\linewidth}
+	\begin{subfigure}[htp]{0.48\linewidth}
 		\centering
 		\includegraphics[width=\linewidth]{../Images/c3/sim2_traj_ori}
 		\caption{Ground tracking - Original trajectory}
 		\label{fig:sim2_traj_ori}
 	\end{subfigure}
 	~
-	\begin{subfigure}[b]{0.4\linewidth}
+	\begin{subfigure}[htp]{0.48\linewidth}
 		\centering
 		\includegraphics[width=\linewidth]{../Images/c3/sim2_traj_track}
 		\caption{Ground tracking - Tracked trajectory}
@@ -115,7 +115,7 @@ In this test the maximum error, apart from the beginning that is large initially
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=0.7\linewidth]{../Images/c3/sim2_traj_both_3d}
+\includegraphics[width=0.9\linewidth]{../Images/c3/sim2_traj_both_3d}
 \caption{Ground tracking - Oblique Camera - 3D trajectory}
 \label{fig:sim2_traj_both_3d}
 \end{figure}
@@ -130,47 +130,60 @@ In this test the maximum error, apart from the beginning that is large initially
 \subsubsection{Set up}
 This simulation is the first one with two quadcopters. The Red sphere is moving on the floor (Describing a curve) while both quad's cameras capture pictures and the on board computers (that are simulated) process them and self-command quads in order to follow the target. The cameras are also oblique (45 degrees from the previous; Figure: \ref{fig:sim3_set_up}). The speediness is the same one that in simulation 2.
 
-\begin{figure}[h]
+
+\begin{figure}[htp]
 	\centering
-	\begin{subfigure}[b]{0.4\linewidth}
-	\centering
-		\includegraphics[width=\linewidth]{../Images/c3/sim3_set_up}
-		\caption{Stereo tracking - Set up}
-		\label{fig:sim3_set_up}
-	\end{subfigure}
-	~
-	\begin{subfigure}[b]{0.4\linewidth}
-		\centering
-		\includegraphics[width=\linewidth]{../Images/c3/sim3_traj_both_3d}
-		\caption{Stereo tracking - 3D trajectory}
-		\label{fig:sim3_traj_both_3d}
-	\end{subfigure}
+	\includegraphics[width=0.65\linewidth]{../Images/c3/sim3_set_up}
+	\caption{Stereo tracking - Set up}
+	\label{fig:sim3_set_up}
 \end{figure}
+
+
+%\begin{figure}[h]
+%	\centering
+%	\begin{subfigure}[b]{0.4\linewidth}
+%	\centering
+%		\includegraphics[width=\linewidth]{../Images/c3/sim3_set_up}
+%		\caption{Stereo tracking - Set up}
+%		\label{fig:sim3_set_up}
+%	\end{subfigure}
+%	~
+%	\begin{subfigure}[b]{0.4\linewidth}
+%		\centering
+%		\includegraphics[width=\linewidth]{../Images/c3/sim3_traj_both_3d}
+%		\caption{Stereo tracking - 3D trajectory}
+%		\label{fig:sim3_traj_both_3d}
+%	\end{subfigure}
+%\end{figure}
 
 \subsubsection{Test and results}
 
-	In this simulation the results converge fastly from the initial state to the target's position. Here the max error is $\sim$ 4 cm. and medium error is $\sim$ 1 cm. Max error is found at the beginning of the second curve. That is because the target increase it's velocity considerably (And the EKF suppose a linear movement). This, together with the dynamic behavior of the quadrotors, make the path-line seems a sawtooth (Figure: \ref{fig:sim3_traj_both_3d}).
+	In this simulation the results converge fastly from the initial state to the target's position. Here the max error is $\sim$ 3 cm. and medium error is $\sim$ 1 cm. Max error is found at the beginning of the second curve. That is because the target increase it's velocity considerably (And the EKF suppose a linear movement). This, together with the dynamic behavior of the quadrotors, make the path-line seems a sawtooth (Figure: \ref{fig:sim3_traj_both_3d}).
 	
-\begin{figure}[h]
+
+\begin{figure}[hp]
 	\centering
-	\begin{subfigure}[b]{0.4\linewidth}
+	\begin{subfigure}[hp]{0.48\linewidth}
 		\centering
 		\includegraphics[width=\linewidth]{../Images/c3/sim3_traj_ori}
 		\caption{Stereo tracking - Original trajectory}
 		\label{fig:sim3_traj_ori}
 	\end{subfigure}
 	~
-	\begin{subfigure}[b]{0.4\linewidth}
+	\begin{subfigure}[hp]{0.48\linewidth}
 		\centering
 		\includegraphics[width=\linewidth]{../Images/c3/sim3_traj_track}
 		\caption{Stereo tracking - Tracked trajectory}
 		\label{fig:sim3_traj_track}
 	\end{subfigure}
-
 \end{figure}
 
-
-
+\begin{figure}[htp]
+		\centering
+		\includegraphics[width=0.7\linewidth]{../Images/c3/sim3_traj_both_3d}
+		\caption{Stereo tracking - 3D trajectory}
+		\label{fig:sim3_traj_both_3d}
+\end{figure}
 
 %-------------------------------------------------------------------------------------------------------
 %-------------------------------------------------------------------------------------------------------
@@ -179,9 +192,9 @@ This simulation is the first one with two quadcopters. The Red sphere is moving 
 \subsubsection{Set up}
  On this experiment, there is again only one quadrotor(Figure: \ref{fig:sim4_set_up}). Instead, one more target was added (Blue sphere). Both objects describe the curve, keeping their relative distance (Moving as a rigid solid, so the blue is always on the left-side of the path). the watcher's camera is also oblique (45 degrees) and spheres keeps the same speed of the previous simulation.
  
-\begin{figure}[ht]
+\begin{figure}[htp]
 	\centering
-	\includegraphics[width=0.7\linewidth]{../Images/c3/sim4_set_up}
+	\includegraphics[width=0.6\linewidth]{../Images/c3/sim4_set_up}
 	\caption{Multiple Targets - Set Up}
 	\label{fig:sim4_set_up}
 \end{figure}
@@ -190,35 +203,37 @@ This simulation is the first one with two quadcopters. The Red sphere is moving 
 
 	Firstly, figures \ref{fig:sim4_redtarget} and \ref{fig:sim4_bluetarget} shows the X and Y coordinate of the targets (Both real and estimate). Secondly, figure \ref{fig:sim4_3dtraj} shows the 3D path-lines of both red and blue spheres. \\
 	
-	The results of red tracking are quite good and similar to the ones explained in "Ground tracking - Oblique camera" \ref{fig:sim2_traj_both_3d}. The tracking of the blue sphere seems to be wrong. However, it is not. This deviation is due to lack of information. The camera didn't capture the whole blue sphere \ref{fig:sim4_centroid_objs}, causing an error between the centroid of the recognized part of the sphere in the image and the real one. That's why the tracked-path is always displaced a few centimeters from the real one. The maximum error is $\sim$ 20 cm and the medium is $\sim$ 6 cm.
-
-\begin{figure}[ht]
-	\centering
-	\begin{subfigure}[ht]{0.45\linewidth}
+	\begin{figure}[hp]
 		\centering
-		\includegraphics[width=\linewidth]{../Images/c3/sim4_redtarget}
-		\caption{Multiple Targets - Red target}
-		\label{fig:sim4_redtarget}	
-	\end{subfigure}
-	~
-	\begin{subfigure}[ht]{0.45\linewidth}
-		\centering
-		\includegraphics[width=\linewidth]{../Images/c3/sim4_bluetarget}
-		\caption{Multiple Targets - Blue target}
-		\label{fig:sim4_bluetarget}
-	\end{subfigure}
-\end{figure}
+		\begin{subfigure}[hp]{0.45\linewidth}
+			\centering
+			\includegraphics[width=\linewidth]{../Images/c3/sim4_redtarget}
+			\caption{Multiple Targets - Red target}
+			\label{fig:sim4_redtarget}	
+		\end{subfigure}
+		~
+		\begin{subfigure}[hp]{0.45\linewidth}
+			\centering
+			\includegraphics[width=\linewidth]{../Images/c3/sim4_bluetarget}
+			\caption{Multiple Targets - Blue target}
+			\label{fig:sim4_bluetarget}
+		\end{subfigure}
+	\end{figure}
+	
+	The results of red tracking are quite good and similar to the ones explained in "Ground tracking - Oblique camera" \ref{fig:sim2_traj_both_3d}. The tracking of the blue sphere seems to be wrong. However, it is not. This deviation is due to lack of information. The camera didn't capture the whole blue sphere \ref{fig:sim4_centroid_objs}, causing an error between the centroid of the recognized part of the sphere in the image and the real one. That's why the tracked-path is always displaced a few centimeters from the real one. The maximum error is $\sim$ 15 cm and the medium is $\sim$ 6 cm.
 
-\begin{figure}[ht]
+
+
+\begin{figure}[t]
 	\centering
-	\begin{subfigure}[ht]{0.6\linewidth}
+	\begin{subfigure}{0.6\linewidth}
 		\centering
 		\includegraphics[width=\linewidth]{../Images/c3/sim4_3dtraj}
 		\caption{Multiple Targets - 3D trajectory}
 		\label{fig:sim4_3dtraj}
 	\end{subfigure}
 	~
-	\begin{subfigure}[ht]{0.2\linewidth}
+	\begin{subfigure}{0.2\linewidth}
 		\centering
 		\includegraphics[width=\linewidth]{../Images/c3/sims_two_object_centroid_out}
 		\caption{Multiple Targets - Objects centroids on Image}

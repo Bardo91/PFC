@@ -1,6 +1,6 @@
 On previous sections every fragment of the system was described. Figure \ref{fig:System_Architecture} give a look to the common architecture of the system. The basic structure is composed of:
 % System architecture image
-\begin{figure}[h]
+\begin{figure}[hp]
 	\centering
 	\includegraphics[width=0.50\textwidth,natwidth=220,natheight=1467]{../Images/c2/Architecture.png}
 	\caption{System Architecture}
@@ -17,15 +17,16 @@ On previous sections every fragment of the system was described. Figure \ref{fig
 
 Every quadrotors has a camera and an embedded computer that runs the algorithm. Every frame, the algorithm segment the image and send to the ground station through the AP. The station process the received data and make an step on the tracking algorithm (EKF).
 
+\newpage
 \subsection{Quadrotors Software}
 
-	\begin{wrapfigure}{r}{0.5\textwidth}
+	\begin{figure}[hp]
 		\begin{center}
-			\includegraphics[width=\linewidth]{../Images/c2/Quadsoftware}
+			\includegraphics[width=0.7\linewidth]{../Images/c2/Quadsoftware}
 		\end{center}
 		\caption{Quadrotor's Software}
 		\label{fig:Quadsoftware}
-	\end{wrapfigure}
+	\end{figure}
 
 	Every Quadrotor will run an application \ref{fig:Quadsoftware} that is composed by a number of threads that allows it to parallelize the algorithm. This threads are:
 	
@@ -42,13 +43,13 @@ Every quadrotors has a camera and an embedded computer that runs the algorithm. 
 	The UI thread is a simple thread that display some options to get information about the process and also to stop it safely. The second thread handle the camera device and store it as soon as possible in order to allow the third thread to process images without delay. Eventually the communication thread send the information acquired on the previous process to the ground station through the TCP/IP connection.
 	
 \subsection{Ground Station Software}
-	\begin{wrapfigure}{r}{0.5\textwidth}
+	\begin{figure}[hp]
 		\begin{center}
-			\includegraphics[width=\linewidth]{../Images/c2/GroundStationsoftware}
+			\includegraphics[width=0.7\linewidth]{../Images/c2/GroundStationsoftware}
 		\end{center}
 		\caption{Ground station's Software}
 		\label{fig:GroundStation}
-	\end{wrapfigure}
+	\end{figure}
 
 	On the ground station, as in quad's computer, there will be running an application with parallel threads that manage the information to run as fast as possible the tracking algorithm. This threads are:
 
