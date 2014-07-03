@@ -114,9 +114,16 @@
 \subsection{Test with Odroid and Ground Station}
 	\label{test_with_odroid_and_GT}
 	
+	\begin{wrapfigure}{r}{0.5\linewidth}
+		\includegraphics[width=\linewidth]{../Images/c4/odroidu3}
+		\caption{Hardkernel Odroid u3}
+		\label{fig:odroidu3}
+	\end{wrapfigure}
+		
 	The result of this sections where obtained from two application. The first is the Ground Station application, which were running in the same computer of the previous section. This PC was connected to a local network (Router). The architecture of this app  was described in figure \ref{fig:GroundStation}
 	
 	The second application were running inside the onboard computer \ref{fig:Quadsoftware} connected by WiFi to the same network. Particularly, the onboard computer is a Hardkernel Odroid-u3 with the following characteristics:
+	
 	
 	\begin{itemize}
 		\item 1.7GHz Quad-Core processor 
@@ -129,9 +136,12 @@
 	
 	\subsubsection{Ground Tracking algorithm}
 	
-	The first test case was (As in previous sections), the tracking of a single ground target. The following table got the timing information of the process. It's important to mention that the application has the four different threads mentioned previously \ref{itemize:quadappthreads}.
+	The first test case was (As in previous sections), the tracking of a single ground target. The following table got the timing information of the process. It's important to mention that the application has the four different threads mentioned previously \ref{itemize:quadappthreads}. That means that unlike the previous section, the execution time is not sequential but parallel. So the complete process time is not the summarize of each process's time.
 	
+	Attending to the quadrotor's application, the following table gather some process's duration and it speed:
 	% 666 TODO: quitar el filtro de media del tratamiento que ralentiza mucho
+	\newline
+	\newline
 	{
 	\centering
 		\begin{tabular}{|c|c|c|c|c|c|}
@@ -141,7 +151,26 @@
 		\hline 
 		\end{tabular} 
 	}
-
+	\newline
+	
+	This second table gather the time information in the Ground Station application:
+	\newline
+	\newline
+	{
+	\centering
+		\begin{tabular}{|c|c|c|}
+		\hline  					&  comm		&  EKF step	\\
+		\hline  \textbf{time (ms)}	& 			& 			\\
+		\hline  \textbf{fps (1/s)}	&  			&  			\\
+		\hline 
+		\end{tabular} 
+	}
+	\newline
+	
+	The higher computational cost is in the quadcopter who is responsible of the image capture and segmentation. Due to the lower computational characteristics of the onboard pc the speed of the algorithm is slightly reduced.
+	
+	Finally, the following figure \ref{fig:arch_trajs} shows the original trajectory and the tracked one. %666 TODO info losement????
+	
 	\begin{figure}[ph]
 		\centering
 		\includegraphics[width=\linewidth]{../Images/c4/arch_trajs}
