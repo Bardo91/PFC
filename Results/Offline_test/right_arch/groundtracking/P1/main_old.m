@@ -5,8 +5,8 @@ stationOutLog = load('out_log.txt');
 [nV, mV] = size(viconData);
 [nO, mO] = size(stationOutLog);
 
-nO = 200;
-nV = nO;
+% nO = 200;
+ nV = nO;
 
 figure(1);
 subplot(2,1,1);
