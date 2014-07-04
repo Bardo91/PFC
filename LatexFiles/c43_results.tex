@@ -85,7 +85,7 @@
 		\begin{tabular}{|c|c|c|c|c||c|}
 		\hline  					&  Open Image	&  RGB to HSV 	& Segmentation 	& EKF step  & Complete \\ 
 		\hline  \textbf{time (ms)}	&	0.0222		& 	0.0031 		&  	0.0157		&  	0.0001 	&  0.0429		\\ 
-		\hline  \textbf{fps (1/s)}	& 	45 			& 	321.5 		& 	63.8 		& 7672.5	&  23.3		\\ 
+		\hline  \textbf{fps (1/s)}	& 	45 			& 	321.5 		& 	63.8 		& 9785.5	&  23.3		\\ 
 		\hline 
 		\end{tabular} 
 	}
@@ -146,8 +146,8 @@
 	\centering
 		\begin{tabular}{|c|c|c|c|c|c|}
 		\hline  					&  Open Img	&  cp Img 	& Vicon 	& Treat img & Comm  		\\ 
-		\hline  \textbf{time (ms)}	& 	0.0154	& 0.0018	&	0.0001	&  	 0.1367	&	0.0001		\\ 
-		\hline  \textbf{fps (1/s)}	&  	68		&  63.2		&  16879	&  	7		&	12022		\\ 
+		\hline  \textbf{time (ms)}	& 	0.0154	& 0.0018	&	0.0001	&  	 0.019	&	0.0001		\\ 
+		\hline  \textbf{fps (1/s)}	&  	68		&  63.2		&  16879	&  	51.23	&	12022		\\ 
 		\hline 
 		\end{tabular} 
 	}
@@ -160,8 +160,8 @@
 	\centering
 		\begin{tabular}{|c|c|c|}
 		\hline  					&  comm		&  EKF step	\\
-		\hline  \textbf{time (ms)}	& 			& 			\\
-		\hline  \textbf{fps (1/s)}	&  			&  			\\
+		\hline  \textbf{time (ms)}	& 	0.0001	& 	0.0001	\\
+		\hline  \textbf{fps (1/s)}	&  	10567.5	&  	9608.5	\\
 		\hline 
 		\end{tabular} 
 	}
@@ -169,7 +169,9 @@
 	
 	The higher computational cost is in the quadcopter who is responsible of the image capture and segmentation. Due to the lower computational characteristics of the onboard pc the speed of the algorithm is slightly reduced.
 	
-	Finally, the following figure \ref{fig:arch_trajs} shows the original trajectory and the tracked one. %666 TODO info losement????
+	Finally, the following figure \ref{fig:arch_trajs} shows the original trajectory and the tracked one. 
+	
+	%666 TODO info losement????
 	
 	\begin{figure}[ph]
 		\centering
