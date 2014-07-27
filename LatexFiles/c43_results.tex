@@ -22,7 +22,7 @@
 	Figure: \ref{fig:frames_PC} shows an example of captured image from the camera and the result of the segmentation algorithm. Particularly, we were looking for orange color (The cap of the quadrotor in this case). However unlike simulation, where there was only one object as the result of segmentation, the algorithm return many targets. The first sift is by size, we do not consider tiny objects that use to be noise and are quantitative smaller than the target.
 		
 	
-	Following sections shows the results of the described algorithm while running completely on the same computer and afterwards using the definitely structure of the system (Ground Station on PC and the capture and segmentation on the onboard computer) with the provided datasets.
+	Following sections shows the results of the described algorithm while running completely on the same computer and afterwards using the definitely structure of the system (Ground Station on PC and the capture and segmentation on the on-board computer) with the provided datasets.
 
 \subsection{Complete Test in PC}
 	PC's and other's characteristics:
@@ -48,7 +48,7 @@
 
 	{
 	\label{Reference_fps_table}
-	This application runs sequentially, so the "complete"\footnote{The complete time has a higher value, than the addition of the previous, because it includes some GUI process} time of the process is the addition of the previous ones. Therefore, It is possible to reduce the complete process time using multi-threading (or in other words increase the FPS). In the following section will be described the results of the process with multi-threading inside the onboard computer. \ref{test_with_odroid_and_GT}
+	This application runs sequentially, so the "complete"\footnote{The complete time has a higher value, than the addition of the previous, because it includes some GUI process} time of the process is the addition of the previous ones. Therefore, It is possible to reduce the complete process time using multi-threading (or in other words increase the FPS). In the following section will be described the results of the process with multi-threading inside the on-board computer. \ref{test_with_odroid_and_GT}
 	}
 	
 	The next graphs shows the original and estimated position of the target \ref{fig:trajectories_PC} and the error between both \ref{fig:errors_PC}. In general terms, the errors associated with each axis are bounded below 0.2 m.
@@ -120,9 +120,9 @@
 		\label{fig:odroidu3}
 	\end{wrapfigure}
 		
-	The result of this sections where obtained from two application. The first is the Ground Station application, which were running in the same computer of the previous section. This PC was connected to a local network (Router). The architecture of this app  was described in figure \ref{fig:GroundStation}
+	The result of this sections where obtained from two application. The first is the Ground Station application, which were running in the same computer of the previous section. This PC was connected to a local network (Router). The architecture of this app.  was described in figure \ref{fig:GroundStation}
 	
-	The second application were running inside the onboard computer \ref{fig:Quadsoftware} connected by WiFi to the same network. Particularly, the onboard computer is a Hardkernel Odroid-u3 with the following characteristics:
+	The second application were running inside the on-board computer \ref{fig:Quadsoftware} connected by WiFi to the same network. Particularly, the on-board computer is a Hardkernel Odroid-u3 with the following characteristics:
 	
 	
 	\begin{itemize}
@@ -155,7 +155,7 @@
 	
 	This second table gather the time information in the Ground Station application:
 	\newline
-	\newline
+	
 	{
 	\centering
 		\begin{tabular}{|c|c|c|}
@@ -167,18 +167,57 @@
 	}
 	\newline
 	
-	The higher computational cost is in the quadcopter who is responsible of the image capture and segmentation. Due to the lower computational characteristics of the onboard pc the speed of the algorithm is slightly reduced.
+	The higher computational cost is the image capture and segmentation, by the quadcopter. Due to the lower computational characteristics of the on-board pc the speed of the algorithm is slightly reduced.
 	
-	Finally, the following figure \ref{fig:arch_trajs} shows the original trajectory and the tracked one. 
-	
-	%666 TODO info losement????
+	Finally, the following figure \ref{fig:arch_trajs} shows the original trajectory and the tracked one. Should be noted that the amount of info used by the tracker is lower than the provider by the dataset. That's because the asynchronism, if some new info if get before been processed the application process the last one in order to work with the newest data as possible. The medium error is $\sim$ 0.2m as in the previous tests.
 	
 	\begin{figure}[ph]
 		\centering
-		\includegraphics[width=\linewidth]{../Images/c4/arch_trajs}
+		\includegraphics[width=0.7\linewidth]{../Images/c4/arch_trajs}
 		\caption{Original and tracked trajectories}
 		\label{fig:arch_trajs}
 	\end{figure}
 
 	
 	\subsubsection{Stereo Tracking algorithm}
+		Attending to the quadrotor's application, the following table gather some process's duration and it speed:
+		% 666 TODO: quitar el filtro de media del tratamiento que ralentiza mucho
+		\newline
+		\newline
+		{
+		\centering
+			\begin{tabular}{|c|c|c|c|c|c|}
+			\hline  					&  Open Img	&  cp Img 	& Vicon 	& Treat img & Comm  		\\ 
+			\hline  \textbf{time (ms)}	& 	0.0161	& 0.0019&	0.000098	&  	 0.02	&	0.0001		\\ 
+			\hline  \textbf{fps (1/s)}	&  			&  		&  	&  		&			\\ 
+			\hline 
+			\end{tabular} 
+		}
+		\newline
+		
+		This second table gather the time information in the Ground Station application:
+		\newline
+		
+		{
+		\centering
+			\begin{tabular}{|c|c|c|}
+			\hline  					&  comm		&  EKF step	\\
+			\hline  \textbf{time (ms)}	& 	0.0001	& 	0.0001	\\
+			\hline  \textbf{fps (1/s)}	&  		&  		\\
+			\hline 
+			\end{tabular} 
+		}
+		\newline
+	\begin{figure}[ph]
+		\centering
+		\includegraphics[width=0.7\linewidth]{../Images/c4/arch_trajs_stero}
+		\caption{Original and tracked trajectories}
+		\label{fig:arch_trajs_stero}
+	\end{figure}
+	
+	\begin{figure}[ph]
+		\centering
+		\includegraphics[width=0.6\linewidth]{../Images/c4/arch_3d_trajs_stero}
+		\caption{3d trajectories}
+		\label{fig:arch_3d_trajs_stero}
+	\end{figure}
