@@ -1,7 +1,7 @@
 \section{Strengths and weaknesses}
 	Summarizing, this document shows a vision-based tracking algorithm to be used by UAVs. This algorithm is able to target multiple objects based on their color. This last sentence is the main advantage if it's compared with other algorithms as CAMSHIFT's \cite{blablacam} and so on. The bottle neck of color-based algorithm use to be the computational time, however, our implementation allows to UAV to process fastly the taken pictures. In both cases the algorithm processes faster than 40 pictures by second.
 	The algorithm was tested on many simulations inside the V-REP application and using a variety of datasets provided by the GRVC. In both cases, estimation's error is less than a 10\% of the distance between the target and the camera.
-	In parallel of the developing of the algorithm, we develop a library in order to make it easy to use, not only inside this project, but in many applications. Chapter 7 \ref{chap:c7_annex} have a brief description of this library.
+	In parallel of the developing of the algorithm, we develop a cross-platform library in order to make the code easy to use, not only inside this project, but in many applications. Chapter 7 \ref{chap:c7_annex} have a brief description of this library.
 	
 	% % TODO 666 ADD CITES!!
 	
@@ -35,7 +35,13 @@
 	For example, storing the information about the geometrical position and speed of the targets associated with their shape and color the algorithm will be able to estimate separately their behavior.
 	
 	
-	% % TODO Add image of shape segmentation
+	% % TODO Add image
 		
 	% % TODO 666 ADD CITES!!
 		
+	\subsubsection{Cloud Computing}
+	Dividing the process of the ground station into multiple servers (or computers) can improve the speed and robustness of the system. 
+	
+	% % TODO 666:continueeee
+	
+	% % TODO 666 ADD CITES!!
