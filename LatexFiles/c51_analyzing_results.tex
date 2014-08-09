@@ -1,0 +1,23 @@
+\section{Introduction}
+	In this chapter will be exposes the final conclusions after gathering all the information throwed by the simulations and on the on-board tests. Afterwards some possible future branches are commented.
+	
+\section{Conclusions}
+	Summarizing, this document shows a vision-based tracking algorithm to be used by UAVs. This algorithm is able to target multiple objects based on their color. This last sentence is the main advantage if it's compared with other algorithms as CAMSHIFT's and so on. The bottle neck of color-based algorithm use to be the computational time, however, our implementation allows to UAV to process fastly the taken pictures.
+	The algorithm was tested on many simulations inside the V-REP application and using a variety of datasets provided by the "Highschool of Engineering of the University of Seville".
+	In parallel of the developing of the algorithm, we develop a library in order to make it easy to use, not only inside this project, but in many applications. Chapter 7 \ref{chap:c7_annex} have a brief description of this library.
+	
+
+El algoritmo ha sido integrado en ROS y simulado en Gazebo considerando un modelo dinámico de
+quadrotor basado en el implementado en el paquete Hector-quadrotor de ROS [4]. Se han llevado a cabo
+simulaciones en un entorno realista que simula el testbed multi-UAV de CATEC. Además, el algoritmo ha
+sido integrado en ROS con la misma arquitectura de nodos utilizada en el testbed de CATEC. Por tanto, sería
+fácil realizar experimentos reales en este testbed.
+Los resultados obtenidos mejoran los presentados en [20]. Los tiempos de ejecución y desviación típica
+obtenidos son menores a los obtenidos por el método SPARTAN. Además, el trabajo presentado considera
+obstáculos móviles.
+De forma adicional, se ha publicado un artículo científico[50] basado en los contenidos de este proyecto
+en el WAF (Workshop of Phyisical Agents) 2014, celebrado en León (España).
+	
+\section{Strengths and weaknesses}
+
+\section{Future Branches}
