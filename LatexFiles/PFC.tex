@@ -44,9 +44,9 @@
 
 % First Page.
 \frontmatter
-\title{Undergraduate Final Degree Project. \\ Development and Implementation of a Vision-based Tracking Algorithm for Unmanned Aerial Vehicles}
+\title{Undergraduate Final Degree Project. \\ Development and Implementation of Tracking Algorithm using Unmanned Aerial Vehicles}
 \author{Pablo Ram\'on Soria}
-\date{2014-07-16}
+\date{2014-09-15}
 \maketitle
 
 %----------------------------------------------------------
@@ -68,8 +68,6 @@
 \input{c11_State_of_Art}
 %% Started the main Content
 \mainmatter
-
-%% --> No parts used \part{The First Part}
 
 %----------------------------------------------------------
 % Chapter 2. Algorithmcs & Software architecture
@@ -119,8 +117,13 @@
 \input{c51_analyzing_results}
 
 %----------------------------------------------------------
-\chapter{Appendix} \label{chap:c7_annex}
+\begin{appendix}
+\chapter{BOViL} \label{chap:c6_bovil}
 \input{c61_appendix_bovil}
+
+\chapter{Network in practice} \label{chap:c6_network}
+\input{c67_appendix_network}
+\end{appendix}
 
 %----------------------------------------------------------
 \listoffigures{}
@@ -152,6 +155,10 @@
 \bibitem{descentralized_task_UAV} Edison Pignaton de Freitas, Tales Heimfarth, Armando Morado Ferreira, Carlos Eduardo Pereira, Flavio Rech Wagner and Tony Larsson \textit{Decentralized Task Distribution among Cooperative UAVs in Surveillance Systems Applications}
 
 \bibitem{shape_using_shape_context} Serger Belongie, Jitendra Malik, Jan Puzicha \textit{Shape Matching and Object Recognition Using Shape Context} IEEE Transaction on pattern analysis and machine intelligence. April 2002
+
+\bibitem{CAMSHIFT_FAST} David Exner, Erich Bruns, Daniel Kurz, Anselm Grundhofer and Oliver Bimber  \textit{Fast and Robust CAMShift Tracking}
+
+\bibitem{CAMSHIFT_ENVIROMENT} Lae-Kyoung Lee, Su-Yong An, and Se-Young Oh  \textit{ Robust Visual Object Tracking with Extended CAMShift in Complex Environments}
  
 \bibitem{Vehicle_recog_markov} Tian-min Deng, Yi-ming Shao, Min Li, and Li Lin \textit{Vehicle Recognition Based on Gabor Wavelets Transform and Hidden Markov Model} American Society of Civil Engineers. 2007
  
@@ -170,6 +177,28 @@
 \bibitem{fuzzy_segmentation} Hoel Le Capitaine and Carl Frélicot \textit{A fast fuzzy c-means algorithm for color image segmentation}
 
 \bibitem{camera_models}  Leow Wee Kheng \textit{Camera Models and Imaging}
+
+\bibitem{GPU_CPU_performance} Shuichi Asano, Tsutomu Maruyama and Yoshiki Yamaguchi \textit{Performance Comparison of FPGA, GPU and CPU in image processing}
+
+\bibitem{GPU_parallel_image_processing} Nan Zhang, Jian-li Wang and Yun-shan Chen  \textit{Image Parallel Processing Based on GPU }
+
+\bibitem{GPU_enabled_parrallel} Barry Trager, Chai Wah Wu, Mikel Stanich, Kartheek Chandu  \textit{GPU-enabled parallel processing for image halftoning applications}
+
+\bibitem{color_shape_object_recogn}  Aristeidis Diplaros, Theo Gevers and Ioannis Patras \textit{Combining Color and Shape Information for Illumination-Viewpoint Invariant Object Recognition}
+
+\bibitem{Fast_object_recogn_shape} Wei Wang, Lili Chen, Dongming Chen, Shile Li and Kolja Kuhnlenz  \textit{Fast Object Recognition and 6D Pose Estimation Using ViewPoint Oriented Color-Shape Histogram}
+
+\bibitem{task_allocation} José Joaquín Acevedo B\'añez  \textit{Cooperation of multiple heterogeneous aerial robots in surveillance missions}
+
+\bibitem{Multirate_sampled_uav}  Camilo Ossa-Gomez and Luis Rodrigues \textit{Multi-Rate Sampled-Data Control of a Fly-by-wireless Autonomous Quadrotor Helicopter}
+
+\bibitem{multi_uav_path_planning} Hui Bai, Shihuang Shao and Hongyu Wang \textit{A VTOL quadrotor platform for Multi-UAV path planning}
+
+\bibitem{Big_data_Ecosystem} Yuri Demchenko, Cees de Laat and Peter Membrey \textit{Defining Architecture Components of the Big Data Ecosystem }
+
+\bibitem{Big_data_mapReduce} Shweta Pandey  and Dr.Vrinda Tokekar \textit{Prominence of MapReduce in BIG DATA Processing}
+
+\bibitem{}   \textit{}
 
 \bibitem{SocketWiki} \textit{Network Socket} \url{http://en.wikipedia.org/wiki/Network_socket}
 
