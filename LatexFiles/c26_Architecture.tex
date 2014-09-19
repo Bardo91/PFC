@@ -1,4 +1,5 @@
 On previous sections every fragment of the system was described. Figure \ref{fig:System_Architecture} give a look to the common architecture of the system. The basic structure is composed of:
+
 % System architecture image
 \begin{figure}[hp]
 	\centering
@@ -11,11 +12,11 @@ On previous sections every fragment of the system was described. Figure \ref{fig
 \begin{itemize}
   \item Set of quadrotors.
   \item Groundstation.
-  \item Access Point (AP).
+  \item Access Point.
   \item Targets.
 \end{itemize}
 
-Every quadrotors has a camera and an embedded computer that runs the algorithm. Every frame, the algorithm segment the image and send to the ground station through the AP. The station process the received data and make an step on the tracking algorithm (EKF).
+Every quadrotors has a camera and an embedded computer that runs the algorithm. Every frame, the algorithm segment the image and send to the ground station through the cloud. The station process the received data and make an step on the tracking algorithm (EKF).
 
 \newpage
 \subsection{Quadrotors Software}
